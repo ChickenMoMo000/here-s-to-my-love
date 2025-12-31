@@ -4,62 +4,101 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy New Year 🎆</title>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      height: 100vh;
-      background: radial-gradient(circle at bottom, #020024, #000);
-      overflow: hidden;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #fff1f7, #ffe6f0);
       font-family: 'Segoe UI', sans-serif;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      overflow-x: hidden;
+      color: #5a3e36;
+      line-height: 1.7;
+      padding: 2rem;
+      scroll-behavior: smooth;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
     }
 
     h1 {
       font-size: clamp(2.5rem, 6vw, 4.5rem);
-      text-shadow: 0 0 20px gold;
+      color: #7a1f2b;
+      text-shadow: 0 0 12px rgba(122,31,43,0.25);
+      margin-bottom: 1.5rem;
+      text-align: center;
     }
 
     p {
-      margin-top: 1rem;
-      font-size: clamp(1rem, 3vw, 1.5rem);
-      max-width: 700px;
-      line-height: 1.6;
-      color: #f5f5f5;
-    }
-
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    .container {
-      position: relative;
-      z-index: 2;
-      padding: 2rem;
-      background: rgba(0,0,0,0.35);
-      border-radius: 20px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 0 40px rgba(255,215,0,0.3);
+      font-size: clamp(1rem, 2.2vw, 1.3rem);
+      white-space: pre-line;
+      overflow-wrap: break-word;
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+      text-align: left;
     }
   </style>
 </head>
+
 <body>
   <canvas id="fireworks"></canvas>
 
-  <div class="container">
-    <h1>🎉 Happy New Year 2026 🎉</h1>
-    <p>
-      May this new year bring you peace in your mind, strength in your heart,
-      clarity in your thoughts, and success in everything you touch.
-      May your days be bright, your nights calm, and your dreams achievable.
-      ✨
-    </p>
-  </div>
+  <h1>Happy New Year, My Wife ❤️</h1>
+
+  <p>
+A new year starts, and somehow you still feel like my favorite constant.
+With you, things feel honest, steady, and real.
+With you everything makes sense.
+With you, I gain the courage to race.
+With you, a day feels alive.
+Without you, everything fades.
+
+I pray for my courage.
+For my inspiration.
+For my dear bride.
+
+Yes — I am talking about you,
+my dear divine.
+
+May this year grow our trust deeper,
+our dreams clearer,
+and our love stronger in the quiet ways that last.
+
+I’m grateful for you,
+to you,
+and with you — always.
+
+To my heart,
+To my soul,
+To my heat,
+To my calm,
+To my patience,
+To my reason,
+To my ally,
+To my vision.
+
+Being the truest I can ever be,
+let me say it again —
+right now,
+right here,
+for a million and one times:
+
+I love you, Divu Dela Chao. ❤️
+
+Thank you,
+for existing,
+and for existing in my life.
+
+I truly, truly thank you,
+my dear divine.
+  </p>
 
   <script>
     const canvas = document.getElementById('fireworks');
@@ -79,9 +118,9 @@
       constructor() {
         this.x = Math.random() * w;
         this.y = h;
-        this.targetY = Math.random() * h * 0.5;
+        this.targetY = Math.random() * h * 0.45;
         this.speed = Math.random() * 3 + 4;
-        this.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+        this.color = `hsl(${Math.random() * 360}, 100%, 65%)`;
         this.exploded = false;
         this.particles = [];
       }
@@ -91,7 +130,7 @@
           this.y -= this.speed;
           if (this.y <= this.targetY) {
             this.exploded = true;
-            for (let i = 0; i < 60; i++) {
+            for (let i = 0; i < 70; i++) {
               this.particles.push(new Particle(this.x, this.y, this.color));
             }
           }
@@ -106,15 +145,36 @@
       }
     }
 
+    class BrightFirework extends Firework {
+      constructor() {
+        super();
+        this.color = `hsl(${Math.random() * 360}, 100%, 75%)`;
+        this.speed += 2;
+      }
+
+      update() {
+        if (!this.exploded) {
+          this.y -= this.speed;
+          if (this.y <= this.targetY) {
+            this.exploded = true;
+            for (let i = 0; i < 120; i++) {
+              this.particles.push(new Particle(this.x, this.y, this.color, 3, true));
+            }
+          }
+        }
+      }
+    }
+
     class Particle {
-      constructor(x, y, color) {
+      constructor(x, y, color, radiusBoost = 0, glowing = false) {
         this.x = x;
         this.y = y;
         this.color = color;
-        this.radius = Math.random() * 2 + 1;
+        this.radius = Math.random() * 2 + 1 + radiusBoost;
         this.angle = Math.random() * Math.PI * 2;
         this.speed = Math.random() * 4 + 1;
         this.life = 100;
+        this.glowing = glowing;
       }
 
       update() {
@@ -126,18 +186,24 @@
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        if(this.glowing) {
+          ctx.shadowBlur = 15;
+          ctx.shadowColor = this.color;
+        } else {
+          ctx.shadowBlur = 0;
+        }
         ctx.fillStyle = this.color;
         ctx.fill();
+        ctx.shadowBlur = 0; // reset
       }
     }
 
     function animate() {
-      ctx.fillStyle = 'rgba(0,0,0,0.2)';
+      ctx.fillStyle = 'rgba(255,255,255,0.18)';
       ctx.fillRect(0, 0, w, h);
 
-      if (Math.random() < 0.05) {
-        fireworks.push(new Firework());
-      }
+      if (Math.random() < 0.06) fireworks.push(new Firework());
+      if (Math.random() < 0.02) fireworks.push(new BrightFirework());
 
       for (let i = fireworks.length - 1; i >= 0; i--) {
         const f = fireworks[i];
@@ -153,6 +219,7 @@
           if (f.particles.length === 0) fireworks.splice(i, 1);
         }
       }
+
       requestAnimationFrame(animate);
     }
 
