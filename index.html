@@ -120,7 +120,7 @@ button:hover{transform:scale(1.05);background:#ff1f5a}
     <h1>❤️ A Valentine Secret ❤️</h1>
     <p>Only one person in this world knows this password.</p>
     <input type="password" id="password" placeholder="Enter password">
-    <button onclick="checkPassword()">Unlock</button>
+    <button type="button" onclick="checkPassword()">Unlock</button>
     <div class="hint">Hint: You say this to me as a reply for almost everything when you're mad 😏 (no spaces)</div>
   </div>
 </div>
@@ -150,16 +150,28 @@ button:hover{transform:scale(1.05);background:#ff1f5a}
 </div>
 
 <script>
-const SECRET="whatever";
+const SECRET = "whatever";
+
+// Allow Enter key to trigger unlock
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('password').addEventListener('keypress', function(e){
+    if(e.key === 'Enter') checkPassword();
+  });
+});
 
 function checkPassword(){
-  const val=document.getElementById('password').value;
-  if(val.toLowerCase()===SECRET.toLowerCase()){
+  const input = document.getElementById('password');
+  const val = input.value.trim();
+
+  console.log("Entered:", val); // Debug log
+
+  if(val.toLowerCase() === SECRET.toLowerCase()){
     document.getElementById('login').classList.add('hidden');
     document.getElementById('main').classList.remove('hidden');
-    window.scrollTo(0,0);
-  }else{
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
     alert("Not quite… try again ❤️");
+    input.value = '';
   }
 }
 
@@ -167,7 +179,6 @@ function explodeHeart(){
   const heart = document.getElementById('heart');
   const message = document.getElementById('valentineMessage');
 
-  // Hide heart after tap
   heart.style.display = 'none';
 
   const colors=['#ff0','#ff3','#f0f','#0ff','#fff','#ff5722'];
@@ -183,7 +194,6 @@ function explodeHeart(){
     setTimeout(()=>fw.remove(),1000);
   }
 
-  // Pop-up effect after slight delay
   setTimeout(()=>{
     message.classList.remove('hidden');
     message.style.transform = 'scale(0.5)';
@@ -194,8 +204,6 @@ function explodeHeart(){
       message.style.opacity = '1';
     },50);
   },400);
-}
-  document.getElementById('valentineMessage').classList.remove('hidden');
 }
 </script>
 
