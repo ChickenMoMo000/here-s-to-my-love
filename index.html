@@ -25,13 +25,14 @@ body {
 }
 
 body {
-    width: 100vw;
+    width: 100%;
     min-height: 100dvh;
 
     overflow-x: hidden;
 }
 
 img {
+    display: block;
     max-width: 100%;
 }
 
@@ -48,8 +49,6 @@ img {
 
     width: 100%;
     height: 100dvh;
-
-    max-width: 100vw;
 
     overflow-x: hidden;
 
@@ -74,7 +73,7 @@ img {
 
 
 /* =========================================================
-   BUTTONS
+   BUTTON
 ========================================================= */
 
 .gold-button {
@@ -85,15 +84,15 @@ img {
 
     justify-content: center;
 
-    width: auto;
+    min-width: 160px;
 
-    min-width: 170px;
+    min-height: 48px;
 
-    min-height: 50px;
+    padding:
+        12px 22px;
 
-    padding: 13px 22px;
-
-    border: 1px solid #d8b96d;
+    border:
+        1px solid #d8b96d;
 
     border-radius: 50px;
 
@@ -110,11 +109,11 @@ img {
         Georgia,
         serif;
 
-    font-size: 15px;
+    font-size: 14px;
 
     font-weight: bold;
 
-    letter-spacing: .7px;
+    letter-spacing: .6px;
 
     cursor: pointer;
 
@@ -123,6 +122,9 @@ img {
     box-shadow:
         0 0 25px
         rgba(225,185,90,.25);
+
+    -webkit-tap-highlight-color:
+        transparent;
 }
 
 .gold-button:active {
@@ -131,8 +133,7 @@ img {
 
 
 /* =========================================================
-   SCREEN 1
-   DOOR
+   DOOR SCREEN
 ========================================================= */
 
 #doorScreen {
@@ -143,18 +144,30 @@ img {
 
     justify-content: center;
 
+    width: 100%;
+
+    height: 100dvh;
+
     padding:
-        20px 15px;
+        15px;
+
+    overflow: hidden;
 
     text-align: center;
 
     background:
         radial-gradient(
             circle at center,
-            #3a2a1b,
-            #070604 65%
+            #3a2a1b 0%,
+            #15100b 35%,
+            #070604 75%
         );
 }
+
+
+/* =========================================================
+   DOOR CONTENT
+========================================================= */
 
 .door-content {
 
@@ -166,6 +179,8 @@ img {
 
     height: 100%;
 
+    min-height: 0;
+
     display: flex;
 
     flex-direction: column;
@@ -175,17 +190,24 @@ img {
     justify-content: center;
 
     padding:
-        15px 0;
+        10px 0;
 }
+
+
+/* =========================================================
+   TITLE
+========================================================= */
 
 .door-title {
 
     width: 100%;
 
+    max-width: 360px;
+
     font-size:
         clamp(
-            1.8rem,
-            9vw,
+            1.65rem,
+            8.5vw,
             3rem
         );
 
@@ -193,33 +215,38 @@ img {
 
     letter-spacing: 1px;
 
+    color: #fff;
+
     text-shadow:
         0 0 20px
-        rgba(255,220,150,.3);
+        rgba(255,220,150,.35);
 }
+
 
 .door-subtitle {
 
     width: 100%;
 
-    max-width: 330px;
+    max-width: 310px;
 
-    margin-top: 10px;
+    margin-top: 8px;
 
     color: #bcae98;
 
     font-size:
         clamp(
-            .8rem,
-            3.8vw,
-            1rem
+            .75rem,
+            3.5vw,
+            .95rem
         );
 
-    line-height: 1.45;
+    line-height: 1.4;
 }
 
 
-/* Door itself */
+/* =========================================================
+   DOOR
+========================================================= */
 
 .church-door {
 
@@ -227,42 +254,54 @@ img {
 
     width:
         min(
-            68vw,
-            245px
+            62vw,
+            230px
         );
+
+    /*
+       Do NOT use 43vh here.
+       It can become too large on short phones.
+    */
 
     height:
         min(
-            43vh,
-            330px
+            39dvh,
+            300px
         );
 
-    min-height: 245px;
+    min-height: 220px;
 
-    margin-top: 24px;
+    margin-top: 20px;
 
     background:
         linear-gradient(
             90deg,
-            #140a05,
-            #55331c,
-            #160a04
+            #140a05 0%,
+            #55331c 50%,
+            #160a04 100%
         );
 
     border:
-        9px solid #725033;
+        8px solid #725033;
 
     border-radius:
-        130px
-        130px
+        120px
+        120px
         8px
         8px;
 
     box-shadow:
         inset 0 0 45px #000,
-        0 0 40px
-        rgba(0,0,0,.8);
+        0 0 40px rgba(0,0,0,.8);
+
+    transition:
+        transform 1.5s ease;
 }
+
+
+/* =========================================================
+   CROSS
+========================================================= */
 
 .door-cross {
 
@@ -270,15 +309,15 @@ img {
 
     left: 50%;
 
-    top: 38%;
+    top: 40%;
 
     transform:
         translate(-50%,-50%);
 
     font-size:
         clamp(
-            3rem,
-            15vw,
+            2.8rem,
+            14vw,
             4rem
         );
 
@@ -291,17 +330,22 @@ img {
         #d4b66b;
 }
 
+
+/* =========================================================
+   HANDLE
+========================================================= */
+
 .door-handle {
 
     position: absolute;
 
-    right: 12%;
+    right: 11%;
 
     top: 53%;
 
-    width: 15px;
+    width: 14px;
 
-    height: 15px;
+    height: 14px;
 
     border-radius: 50%;
 
@@ -313,10 +357,18 @@ img {
 }
 
 
+/* =========================================================
+   ENTER BUTTON
+========================================================= */
+
 /*
-   IMPORTANT:
-   Button is now INSIDE the visual layout
-   instead of being positioned below the door.
+   IMPORTANT FIX:
+
+   The button is now positioned INSIDE
+   the door instead of underneath it.
+
+   This prevents it from disappearing
+   below the phone viewport.
 */
 
 .door-enter {
@@ -325,22 +377,26 @@ img {
 
     left: 50%;
 
-    bottom: -65px;
+    bottom: 20px;
 
     transform:
         translateX(-50%);
 
+    min-width: 150px;
+
+    min-height: 46px;
+
+    padding:
+        11px 18px;
+
+    font-size: 12px;
+
     white-space: nowrap;
-
-    min-width: 155px;
-
-    font-size: 13px;
 }
 
 
 /* =========================================================
-   SCREEN 2
-   CHURCH
+   CHURCH SCREEN
 ========================================================= */
 
 #churchScreen {
@@ -355,9 +411,10 @@ img {
         radial-gradient(
             circle at 50% 0%,
             #59452d,
-            #080604 60%
+            #080604 65%
         );
 }
+
 
 .church-content {
 
@@ -367,27 +424,32 @@ img {
             390px
         );
 
-    margin: 0 auto;
-
     min-height: 100%;
 
+    margin: 0 auto;
+
     padding:
-        25px 15px
-        45px;
+        20px 15px
+        40px;
 
     text-align: center;
 }
+
+
+/* =========================================================
+   CHRIST
+========================================================= */
 
 .christ {
 
     font-size:
         clamp(
-            5rem,
-            24vw,
+            4.5rem,
+            21vw,
             8rem
         );
 
-    line-height: .9;
+    line-height: .85;
 
     filter:
         drop-shadow(
@@ -396,36 +458,51 @@ img {
         );
 }
 
+
+/* =========================================================
+   FLOWERS
+========================================================= */
+
 .flower-row {
 
     width: 100%;
 
     margin:
-        10px 0 12px;
+        8px 0 10px;
 
     font-size:
         clamp(
-            1.2rem,
-            6vw,
+            1.05rem,
+            5vw,
             2rem
         );
 
     white-space: nowrap;
+
+    overflow: hidden;
 }
+
+
+/* =========================================================
+   CHURCH HEADING
+========================================================= */
 
 .church-heading {
 
+    width: 100%;
+
     font-size:
         clamp(
-            1.65rem,
-            8vw,
+            1.5rem,
+            7.5vw,
             2.5rem
         );
 
     line-height: 1.1;
 
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 }
+
 
 .church-text {
 
@@ -435,19 +512,19 @@ img {
 
     font-size:
         clamp(
-            .8rem,
-            3.5vw,
+            .78rem,
+            3.4vw,
             .95rem
         );
 
-    line-height: 1.5;
+    line-height: 1.45;
 
-    margin-bottom: 18px;
+    margin-bottom: 15px;
 }
 
 
 /* =========================================================
-   FORM
+   FORM CARD
 ========================================================= */
 
 .form-card {
@@ -455,12 +532,12 @@ img {
     width: 100%;
 
     padding:
-        18px 15px;
+        16px 14px;
 
-    border-radius: 17px;
+    border-radius: 16px;
 
     background:
-        rgba(5,4,3,.85);
+        rgba(5,4,3,.88);
 
     border:
         1px solid
@@ -471,25 +548,28 @@ img {
         rgba(0,0,0,.6);
 }
 
+
 .input-group {
 
     width: 100%;
 
-    text-align: left;
+    margin-bottom: 10px;
 
-    margin-bottom: 12px;
+    text-align: left;
 }
+
 
 .input-group label {
 
     display: block;
 
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 
     color: #d6bd82;
 
-    font-size: 13px;
+    font-size: 12px;
 }
+
 
 .input-group input {
 
@@ -497,10 +577,10 @@ img {
 
     width: 100%;
 
-    height: 48px;
+    height: 46px;
 
     padding:
-        10px 13px;
+        9px 12px;
 
     border:
         1px solid #5d4a31;
@@ -518,22 +598,20 @@ img {
         Georgia,
         serif;
 
-    /*
-       Prevent iOS from zooming the page
-       when an input is selected.
-    */
-
     font-size: 16px;
+
+    -webkit-appearance: none;
 }
+
 
 .form-card .gold-button {
 
-    margin-top: 5px;
+    margin-top: 4px;
 }
 
 
 /* =========================================================
-   SEARCH
+   SEARCH SCREEN
 ========================================================= */
 
 #searchScreen {
@@ -543,6 +621,10 @@ img {
     align-items: center;
 
     justify-content: center;
+
+    width: 100%;
+
+    height: 100dvh;
 
     overflow: hidden;
 
@@ -557,34 +639,34 @@ img {
         );
 }
 
+
 .search-content {
-
-    position: relative;
-
-    z-index: 5;
 
     width: 100%;
 
     max-width: 390px;
 
-    padding: 20px 15px;
+    padding:
+        20px 15px;
 }
+
 
 .magnifier {
 
     font-size:
         clamp(
-            4rem,
-            22vw,
+            3.8rem,
+            20vw,
             6rem
         );
 }
+
 
 .search-text {
 
     width: 100%;
 
-    min-height: 75px;
+    min-height: 65px;
 
     display: flex;
 
@@ -592,27 +674,28 @@ img {
 
     justify-content: center;
 
-    margin-top: 18px;
+    margin-top: 15px;
 
-    padding: 0 8px;
+    padding: 0 5px;
 
     font-size:
         clamp(
-            1rem,
-            5vw,
+            .95rem,
+            4.7vw,
             1.6rem
         );
 
     line-height: 1.35;
 }
 
+
 .search-dots {
 
-    margin-top: 5px;
-
-    letter-spacing: 5px;
+    margin-top: 4px;
 
     color: #b8bdc5;
+
+    letter-spacing: 5px;
 }
 
 
@@ -631,7 +714,7 @@ img {
     overflow-y: auto;
 
     padding:
-        20px 15px;
+        15px;
 
     background:
         radial-gradient(
@@ -641,49 +724,51 @@ img {
         );
 }
 
+
 .found-content {
 
     width: 100%;
 
     max-width: 390px;
 
-    text-align: center;
-
     padding:
         10px 0 25px;
+
+    text-align: center;
 }
+
 
 .found-small {
 
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 3px;
 
     color: #d4b76e;
 }
 
+
 .found-name {
 
     width: 100%;
 
+    margin:
+        7px 0 13px;
+
     font-size:
         clamp(
-            2.3rem,
-            11vw,
+            2rem,
+            10vw,
             4rem
         );
 
     line-height: 1.1;
-
-    margin:
-        8px 0 15px;
 }
 
 
-/*
-   Portrait photo:
-   NEVER force a fixed height.
-*/
+/* =========================================================
+   PORTRAIT PHOTO
+========================================================= */
 
 .photo-preview {
 
@@ -691,22 +776,29 @@ img {
 
     width:
         min(
-            78vw,
-            280px
+            72vw,
+            260px
         );
+
+    max-width: 100%;
 
     height: auto;
 
-    max-height: 52dvh;
+    /*
+       Portrait image is NEVER cropped.
+    */
+
+    max-height: 50dvh;
 
     object-fit: contain;
 
-    margin: 0 auto;
+    margin:
+        0 auto;
 
     border:
-        6px solid #bd9149;
+        5px solid #bd9149;
 
-    border-radius: 12px;
+    border-radius: 11px;
 
     background: #100a05;
 
@@ -715,14 +807,15 @@ img {
         rgba(225,181,83,.4);
 }
 
+
 .pray-button {
 
-    margin-top: 18px;
+    margin-top: 16px;
 }
 
 
 /* =========================================================
-   PRAYER
+   PRAYER SCREEN
 ========================================================= */
 
 #prayerScreen {
@@ -741,6 +834,7 @@ img {
         );
 }
 
+
 .prayer-content {
 
     width:
@@ -754,43 +848,46 @@ img {
     margin: 0 auto;
 
     padding:
-        25px 15px
-        45px;
+        20px 15px
+        40px;
 
     text-align: center;
 }
+
 
 .candles {
 
     display: flex;
 
-    align-items: center;
-
     justify-content: center;
 
-    gap: 18px;
+    align-items: center;
 
-    margin-bottom: 18px;
+    gap: 15px;
+
+    margin-bottom: 15px;
 }
+
 
 .candle {
 
     font-size:
         clamp(
-            2.2rem,
-            11vw,
+            2rem,
+            10vw,
             3.5rem
         );
 }
+
 
 .prayer-card {
 
     width: 100%;
 
     padding:
-        20px 15px;
+        18px 14px;
 
-    border-radius: 17px;
+    border-radius: 16px;
 
     background:
         rgba(12,8,4,.9);
@@ -800,11 +897,12 @@ img {
         rgba(201,164,89,.55);
 }
 
+
 .prayer-card h2 {
 
     font-size:
         clamp(
-            1.5rem,
+            1.4rem,
             7vw,
             2rem
         );
@@ -812,10 +910,11 @@ img {
     color: #dfc27c;
 }
 
+
 .prayer-card p {
 
     margin:
-        7px 0 15px;
+        6px 0 14px;
 
     color: #bcae96;
 
@@ -824,15 +923,16 @@ img {
     line-height: 1.5;
 }
 
+
 .prayer-input {
 
     display: block;
 
     width: 100%;
 
-    min-height: 150px;
+    min-height: 145px;
 
-    padding: 13px;
+    padding: 12px;
 
     border:
         1px solid #665236;
@@ -844,9 +944,9 @@ img {
 
     color: white;
 
-    resize: vertical;
-
     outline: none;
+
+    resize: vertical;
 
     font-family:
         Georgia,
@@ -859,7 +959,7 @@ img {
 
 
 /* =========================================================
-   LETTER
+   LETTER SCREEN
 ========================================================= */
 
 #letterScreen {
@@ -871,7 +971,7 @@ img {
     -webkit-overflow-scrolling: touch;
 
     padding:
-        15px 10px
+        12px 10px
         40px;
 
     background:
@@ -881,6 +981,7 @@ img {
             #080604 75%
         );
 }
+
 
 .letter-container {
 
@@ -904,13 +1005,12 @@ img {
 
     width: 100%;
 
-    padding:
-        7px;
+    padding: 6px;
 
     background: #21150b;
 
     border:
-        7px solid #76552c;
+        6px solid #76552c;
 
     border-radius: 10px;
 
@@ -918,6 +1018,7 @@ img {
         0 0 50px
         rgba(210,169,84,.25);
 }
+
 
 .flower-top,
 .flower-bottom {
@@ -930,20 +1031,20 @@ img {
 
     font-size:
         clamp(
-            1rem,
-            5vw,
+            .9rem,
+            4.8vw,
             1.5rem
         );
 
-    line-height: 1.35;
+    line-height: 1.3;
 
     padding: 3px 0;
 }
 
 
-/*
-   THIS is the important portrait fix.
-*/
+/* =========================================================
+   PORTRAIT LETTER IMAGE
+========================================================= */
 
 .letter-photo {
 
@@ -951,17 +1052,25 @@ img {
 
     width: 100%;
 
-    height: auto;
-
     max-width: 100%;
 
-    max-height: 58dvh;
+    height: auto;
+
+    /*
+       This is the key:
+       no forced height
+       no crop
+       portrait ratio preserved
+    */
+
+    max-height: 55dvh;
 
     object-fit: contain;
 
     object-position: center;
 
-    margin: 3px auto;
+    margin:
+        3px auto;
 
     background: #0c0804;
 
@@ -976,27 +1085,24 @@ img {
 
     width: 100%;
 
-    margin-top: 8px;
+    margin-top: 7px;
 
-    padding:
-        13px;
+    padding: 13px;
 
-    background:
-        #fff3d5;
+    background: #fff3d5;
 
-    color:
-        #382b1b;
+    color: #382b1b;
 
     text-align: left;
 
     font-size:
         clamp(
-            .85rem,
-            4vw,
+            .84rem,
+            3.8vw,
             1rem
         );
 
-    line-height: 1.7;
+    line-height: 1.65;
 
     white-space: pre-wrap;
 
@@ -1005,11 +1111,16 @@ img {
     border-radius: 3px;
 }
 
+
 .confirm-button {
 
-    width: min(100%, 250px);
+    width:
+        min(
+            100%,
+            250px
+        );
 
-    margin-top: 18px;
+    margin-top: 17px;
 }
 
 
@@ -1025,10 +1136,13 @@ img {
 
     justify-content: center;
 
+    width: 100%;
+
+    height: 100dvh;
+
     overflow: hidden;
 
-    padding:
-        15px;
+    padding: 12px;
 
     background:
         linear-gradient(
@@ -1038,6 +1152,7 @@ img {
             #fff
         );
 }
+
 
 .final-message {
 
@@ -1049,41 +1164,43 @@ img {
 
     max-width: 390px;
 
-    max-height: 82dvh;
+    max-height: 80dvh;
 
     overflow-y: auto;
 
-    padding: 15px;
+    padding: 12px;
 
     text-align: center;
 }
+
 
 .final-message h2 {
 
     font-size:
         clamp(
-            1.8rem,
-            9vw,
+            1.65rem,
+            8.5vw,
             3.5rem
         );
 
     line-height: 1.15;
 
-    margin-bottom: 15px;
+    margin-bottom: 13px;
 
     color: #52687d;
 }
+
 
 .final-message p {
 
     font-size:
         clamp(
-            .9rem,
-            4vw,
+            .85rem,
+            3.8vw,
             1.15rem
         );
 
-    line-height: 1.7;
+    line-height: 1.65;
 
     color: #53687b;
 }
@@ -1101,15 +1218,15 @@ img {
 
     bottom: -80px;
 
+    z-index: 10;
+
     transform:
         translateX(-50%);
 
-    z-index: 10;
-
     font-size:
         clamp(
-            3rem,
-            14vw,
+            2.8rem,
+            13vw,
             5rem
         );
 
@@ -1123,61 +1240,80 @@ img {
 
 @media(max-width: 360px) {
 
-    .church-content {
-        padding-top: 18px;
+    .door-content {
+        padding-top: 5px;
     }
 
-    .christ {
-        font-size: 4.8rem;
+    .door-title {
+        font-size: 1.55rem;
     }
 
-    .church-heading {
-        font-size: 1.5rem;
-    }
-
-    .church-text {
-        margin-bottom: 12px;
-    }
-
-    .form-card {
-        padding: 15px 12px;
-    }
-
-    .input-group {
-        margin-bottom: 9px;
-    }
-
-    .input-group input {
-        height: 45px;
+    .door-subtitle {
+        font-size: .72rem;
     }
 
     .church-door {
 
-        width: 210px;
+        width: 195px;
 
-        height: 270px;
+        height: 245px;
 
-        min-height: 270px;
+        min-height: 245px;
 
-        margin-top: 20px;
+        margin-top: 16px;
     }
 
     .door-enter {
-        bottom: -60px;
+
+        bottom: 15px;
+
+        min-width: 140px;
+
+        min-height: 43px;
+
+        font-size: 11px;
+    }
+
+    .church-content {
+
+        padding:
+            16px 12px
+            35px;
+    }
+
+    .christ {
+        font-size: 4.4rem;
+    }
+
+    .church-heading {
+        font-size: 1.4rem;
+    }
+
+    .form-card {
+        padding:
+            14px 11px;
+    }
+
+    .input-group {
+        margin-bottom: 8px;
+    }
+
+    .input-group input {
+        height: 43px;
     }
 
     .photo-preview {
-        max-height: 45dvh;
+        max-height: 44dvh;
     }
 
     .letter-photo {
-        max-height: 52dvh;
+        max-height: 50dvh;
     }
 }
 
 
 /* =========================================================
-   LANDSCAPE PHONE
+   LANDSCAPE PHONES
 ========================================================= */
 
 @media(
@@ -1187,36 +1323,54 @@ img {
 ) {
 
     #doorScreen {
+
         overflow-y: auto;
+
+        align-items: flex-start;
     }
 
     .door-content {
-        min-height: 600px;
+
+        height: auto;
+
+        min-height: 100dvh;
+
         justify-content: flex-start;
-        padding-top: 25px;
+
+        padding:
+            20px 0
+            80px;
+    }
+
+    .door-title {
+        font-size: 1.7rem;
     }
 
     .church-door {
 
-        width: 170px;
+        width: 150px;
 
-        height: 220px;
+        height: 190px;
 
-        min-height: 220px;
+        min-height: 190px;
 
-        margin-top: 15px;
+        margin-top: 12px;
     }
 
-    .christ {
-        font-size: 5rem;
+    .door-enter {
+        bottom: 12px;
     }
 
     .church-content {
         padding-top: 15px;
     }
 
+    .christ {
+        font-size: 4.5rem;
+    }
+
     .photo-preview {
-        max-height: 60dvh;
+        max-height: 58dvh;
     }
 
     .letter-photo {
@@ -1226,7 +1380,7 @@ img {
 
 
 /* =========================================================
-   PREVENT INPUT ZOOM ON IOS
+   IOS INPUT FIX
 ========================================================= */
 
 input,
@@ -1238,29 +1392,39 @@ select {
 
 
 /* =========================================================
-   SAFE AREA — IPHONE NOTCH / HOME BAR
+   SAFE AREA
 ========================================================= */
 
-.screen {
-
-    padding-bottom:
-        env(
-            safe-area-inset-bottom,
-            0px
-        );
-}
-
+#doorScreen,
 #churchScreen,
 #prayerScreen,
-#letterScreen {
+#letterScreen,
+#finalScreen {
 
     padding-bottom:
         calc(
-            20px +
+            15px +
             env(
                 safe-area-inset-bottom,
                 0px
             )
         );
+}
+
+
+/* =========================================================
+   NO HORIZONTAL SCROLL
+========================================================= */
+
+html,
+body,
+.screen,
+.church-content,
+.form-card,
+.prayer-card,
+.flower-frame,
+.letter-container {
+
+    max-width: 100vw;
 }
 ```
