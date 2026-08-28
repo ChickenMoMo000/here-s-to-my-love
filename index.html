@@ -1,15 +1,14 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Good Morning, Love ❤️</title>
+<title>A Letter to Heaven</title>
 
 <style>
-
 /* =========================================================
-   BASIC RESET
+   RESET
 ========================================================= */
 
 * {
@@ -26,1077 +25,1310 @@ body {
 }
 
 body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #050505;
+    color: white;
+}
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+/* =========================================================
+   SCREEN SYSTEM
+========================================================= */
 
-    color: #59321f;
+.screen {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* =========================================================
+   COMMON BUTTON
+========================================================= */
+
+.gold-button {
+    border: 1px solid rgba(245, 211, 137, 0.7);
+    background: linear-gradient(
+        135deg,
+        #e3c477,
+        #a77b35
+    );
+    color: #1a1107;
+    padding: 15px 38px;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px rgba(230, 190, 100, 0.25),
+        inset 0 1px rgba(255,255,255,.5);
+
+    transition: .35s;
+}
+
+.gold-button:hover {
+    transform: translateY(-4px) scale(1.03);
+
+    box-shadow:
+        0 0 25px rgba(255, 210, 100, .55),
+        0 10px 35px rgba(0,0,0,.5);
+}
+
+/* =========================================================
+   DOOR SCREEN
+========================================================= */
+
+#doorScreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 
     background:
         radial-gradient(
-            circle at 50% 8%,
-            rgba(255,255,220,1) 0%,
-            rgba(255,225,120,.8) 12%,
-            rgba(255,225,120,0) 36%
+            ellipse at center,
+            rgba(107, 82, 54, .55),
+            transparent 45%
         ),
         linear-gradient(
-            to bottom,
-            #82d7ff 0%,
-            #b8e9ff 38%,
-            #ffe4a0 75%,
-            #fff3ce 100%
+            #0d0b09,
+            #030303
         );
-
 }
 
+.door-atmosphere {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.door-light {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(255, 218, 145, .12),
+        transparent 70%
+    );
+
+    animation: breathingLight 5s infinite alternate;
+}
+
+@keyframes breathingLight {
+
+    from {
+        opacity: .3;
+        transform: translate(-50%, -50%) scale(.8);
+    }
+
+    to {
+        opacity: .8;
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+}
+
+.door-content {
+    position: relative;
+    z-index: 5;
+}
+
+.door-title {
+    font-size: clamp(2.3rem, 7vw, 5.5rem);
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.3),
+        0 0 40px rgba(224,187,105,.35);
+
+    animation: titleAppear 2s ease;
+}
+
+.door-subtitle {
+    margin-top: 20px;
+    color: #c9bda8;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+@keyframes titleAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.church-door {
+
+    width: min(330px, 62vw);
+    height: min(470px, 58vh);
+
+    margin: 50px auto 0;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            90deg,
+            #160c06,
+            #56351e 48%,
+            #170b05
+        );
+
+    border:
+        13px solid #745035;
+
+    border-radius:
+        180px 180px 10px 10px;
+
+    box-shadow:
+        inset 0 0 60px #000,
+        0 0 50px rgba(0,0,0,.8);
+
+    transform-origin: left center;
+
+    animation: doorIdle 6s infinite ease-in-out;
+}
+
+@keyframes doorIdle {
+
+    0%,100% {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+
+    50% {
+        transform: perspective(1000px) rotateY(-2deg);
+    }
+}
+
+.door-cross {
+    position: absolute;
+
+    left: 50%;
+    top: 35%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 4rem;
+
+    color: #c9a85b;
+
+    opacity: .55;
+
+    text-shadow:
+        0 0 20px #d8b865;
+}
+
+.door-handle {
+    position: absolute;
+
+    right: 28px;
+    top: 55%;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: #d4ad5e;
+
+    box-shadow:
+        0 0 15px #d4ad5e;
+}
+
+.door-enter {
+
+    position: absolute;
+
+    bottom: -80px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    white-space: nowrap;
+}
 
 /* =========================================================
-   PAGES
+   CHURCH INTERIOR
 ========================================================= */
 
-.page {
+#churchScreen {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    overflow-y: auto;
+
+    background:
+
+        radial-gradient(
+            ellipse at center top,
+            rgba(135,112,78,.7),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            180deg,
+            #21180f,
+            #080604 80%
+        );
+}
+
+.church-rays {
 
     position: absolute;
 
     inset: 0;
 
-    display: none;
+    background:
 
-    align-items: center;
+        linear-gradient(
+            110deg,
+            transparent 30%,
+            rgba(255,220,150,.05),
+            transparent 45%
+        ),
 
-    justify-content: center;
+        linear-gradient(
+            70deg,
+            transparent 30%,
+            rgba(255,220,150,.04),
+            transparent 45%
+        );
 
-    text-align: center;
-
-    padding:
-        30px
-        25px
-        90px;
-
-    overflow: hidden;
-
+    animation: raysMove 12s infinite linear;
 }
 
-.page.active {
+@keyframes raysMove {
+
+    from {
+        transform: translateX(-20%);
+    }
+
+    to {
+        transform: translateX(20%);
+    }
+}
+
+.church-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(900px, 94%);
+
+    padding: 40px 10px;
+}
+
+.christ {
+
+    font-size: clamp(8rem, 20vw, 15rem);
+
+    line-height: .9;
+
+    filter:
+        drop-shadow(0 0 20px rgba(255,220,150,.3));
+
+    animation:
+        christFloat 5s infinite ease-in-out;
+}
+
+@keyframes christFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.flower-row {
+
+    margin: 25px 0;
+
+    font-size: clamp(2rem,5vw,4rem);
+
+    letter-spacing: 8px;
+
+    animation: flowerGlow 4s infinite alternate;
+}
+
+@keyframes flowerGlow {
+
+    from {
+        filter: brightness(.8);
+    }
+
+    to {
+        filter: brightness(1.25);
+    }
+}
+
+.church-heading {
+
+    font-size: clamp(2rem,5vw,3.5rem);
+
+    margin-bottom: 10px;
+}
+
+.church-text {
+
+    color: #cfc0a6;
+
+    margin-bottom: 30px;
+}
+
+.form-card {
+
+    width: min(700px, 100%);
+
+    margin: auto;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background: rgba(8,6,4,.78);
+
+    border: 1px solid rgba(213,178,105,.35);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.7);
+}
+
+.input-group {
+
+    text-align: left;
+
+    margin-bottom: 17px;
+}
+
+.input-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #d9c18d;
+}
+
+.input-group input {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border-radius: 10px;
+
+    border: 1px solid #5c4a31;
+
+    background: rgba(255,255,255,.055);
+
+    color: white;
+
+    outline: none;
+
+    font-family: Georgia, serif;
+
+    font-size: 1rem;
+
+    transition: .3s;
+}
+
+.input-group input:focus {
+
+    border-color: #d8b96f;
+
+    box-shadow:
+        0 0 20px rgba(220,185,110,.18);
+}
+
+.form-error {
+
+    display: none;
+
+    margin-top: 15px;
+
+    color: #ff9b9b;
+
+    animation: shake .35s;
+}
+
+@keyframes shake {
+
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-4px); }
+}
+
+/* =========================================================
+   SEARCH SCREEN
+========================================================= */
+
+#searchScreen {
 
     display: flex;
 
-    animation:
-        pageAppear .7s ease;
+    justify-content: center;
+    align-items: center;
 
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            120deg,
+            #0e1118,
+            #353943,
+            #11131a
+        );
 }
 
+.cloud {
 
-.content {
+    position: absolute;
+
+    width: 500px;
+    height: 190px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.055);
+
+    filter: blur(20px);
+
+    animation:
+        cloudMove 16s infinite alternate ease-in-out;
+}
+
+.cloud.one {
+
+    left: -150px;
+    top: 15%;
+}
+
+.cloud.two {
+
+    right: -150px;
+    bottom: 10%;
+
+    animation-direction: alternate-reverse;
+}
+
+.cloud.three {
+
+    left: 30%;
+    bottom: -100px;
+
+    animation-duration: 22s;
+}
+
+@keyframes cloudMove {
+
+    from {
+        transform: translateX(-100px) scale(.9);
+    }
+
+    to {
+        transform: translateX(180px) scale(1.2);
+    }
+}
+
+.search-content {
+
+    position: relative;
+
+    z-index: 10;
+}
+
+.magnifier {
+
+    position: relative;
+
+    font-size: 6rem;
+
+    animation:
+        searchSweep 4s infinite ease-in-out;
+
+    filter:
+        drop-shadow(0 0 25px rgba(255,255,255,.4));
+}
+
+@keyframes searchSweep {
+
+    0% {
+        transform:
+            translate(-150px,-70px)
+            rotate(-25deg);
+    }
+
+    25% {
+        transform:
+            translate(130px,70px)
+            rotate(25deg);
+    }
+
+    50% {
+        transform:
+            translate(-120px,130px)
+            rotate(-20deg);
+    }
+
+    75% {
+        transform:
+            translate(150px,-80px)
+            rotate(25deg);
+    }
+
+    100% {
+        transform:
+            translate(-150px,-70px)
+            rotate(-25deg);
+    }
+}
+
+.search-text {
+
+    min-height: 60px;
+
+    margin-top: 35px;
+
+    font-size: clamp(1.3rem,4vw,2.5rem);
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,.4);
+}
+
+.search-dots {
+
+    margin-top: 10px;
+
+    color: #aeb2ba;
+
+    letter-spacing: 6px;
+}
+
+/* =========================================================
+   FOUND SCREEN
+========================================================= */
+
+#foundScreen {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #4a3822,
+            #0a0806 70%
+        );
+}
+
+.found-content {
+
+    animation:
+        foundReveal 2s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes foundReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.5)
+            translateY(80px);
+
+        filter: blur(20px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+        filter: blur(0);
+    }
+}
+
+.found-small {
+
+    letter-spacing: 6px;
+
+    color: #d9bd7c;
+
+    font-size: .9rem;
+}
+
+.found-name {
+
+    font-size: clamp(3rem,9vw,7rem);
+
+    margin: 15px 0;
+
+    text-shadow:
+        0 0 15px #fff2,
+        0 0 50px rgba(225,190,110,.7);
+}
+
+.photo-preview {
+
+    width: 250px;
+    height: 320px;
+
+    object-fit: cover;
+
+    border:
+        8px solid #c39a51;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 0 50px rgba(224,182,90,.45);
+
+    animation:
+        photoGlow 3s infinite alternate;
+}
+
+@keyframes photoGlow {
+
+    from {
+        box-shadow:
+            0 0 25px rgba(224,182,90,.25);
+    }
+
+    to {
+        box-shadow:
+            0 0 70px rgba(224,182,90,.65);
+    }
+}
+
+.pray-button {
+
+    margin-top: 30px;
+}
+
+/* =========================================================
+   PRAYER SCREEN
+========================================================= */
+
+#prayerScreen {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #493824,
+            #090705 75%
+        );
+}
+
+.prayer-content {
+
+    width: min(750px,92%);
+}
+
+.candles {
+
+    margin-bottom: 35px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 35px;
+}
+
+.candle {
+
+    font-size: 4rem;
+
+    filter: grayscale(1);
+
+    transition: 1s;
+}
+
+.candle.lit {
+
+    filter:
+        drop-shadow(0 0 15px #ffd76b)
+        drop-shadow(0 0 45px #ffbd45);
+
+    animation:
+        flamePulse 1s infinite alternate;
+}
+
+@keyframes flamePulse {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.12);
+    }
+}
+
+.prayer-card {
+
+    padding: 35px;
+
+    background:
+        rgba(17,11,6,.9);
+
+    border:
+        2px solid rgba(181,145,74,.65);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 80px rgba(255,190,80,.12);
+}
+
+.prayer-card h2 {
+
+    font-size: 2rem;
+
+    color: #e4c783;
+}
+
+.prayer-card p {
+
+    color: #bcae97;
+
+    margin: 10px 0 20px;
+}
+
+.prayer-input {
+
+    width: 100%;
+
+    min-height: 190px;
+
+    resize: none;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    border: 1px solid #6d5737;
+
+    background: rgba(255,255,255,.05);
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: 1rem;
+
+    line-height: 1.6;
+
+    outline: none;
+}
+
+.prayer-input:focus {
+
+    border-color: #d6b86f;
+
+    box-shadow:
+        0 0 25px rgba(215,185,110,.15);
+}
+
+/* =========================================================
+   LETTER SCREEN
+========================================================= */
+
+#letterScreen {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    overflow-y: auto;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #4a3723,
+            #090705 75%
+        );
+}
+
+.letter-container {
+
+    width: min(680px,92%);
+
+    animation:
+        letterReveal 1.8s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes letterReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(100px)
+            scale(.75);
+
+        filter: blur(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter: blur(0);
+    }
+}
+
+.flower-frame {
+
+    position: relative;
+
+    padding: 25px;
+
+    background: #24180d;
+
+    border:
+        15px solid #76552d;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 80px rgba(222,180,90,.3);
+}
+
+.flower-top,
+.flower-bottom {
+
+    font-size: 2rem;
+
+    letter-spacing: 5px;
+
+    padding: 5px;
+}
+
+.letter-photo {
+
+    display: block;
+
+    width: 100%;
+
+    max-height: 380px;
+
+    object-fit: cover;
+
+    border:
+        5px solid #c69c55;
+}
+
+.letter-text {
+
+    margin-top: 18px;
+
+    padding: 25px;
+
+    background:
+        #fff4d9;
+
+    color: #382b1b;
+
+    text-align: left;
+
+    font-size: 1.05rem;
+
+    line-height: 1.8;
+
+    white-space: pre-wrap;
+
+    border-radius: 4px;
+
+    box-shadow:
+        inset 0 0 20px rgba(120,80,20,.12);
+}
+
+.confirm-button {
+
+    margin-top: 28px;
+}
+
+/* =========================================================
+   FINAL SKY
+========================================================= */
+
+#finalScreen {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #b9ddfa 0%,
+            #e9f5ff 50%,
+            #ffffff 100%
+        );
+
+    color: #536679;
+}
+
+.sun {
+
+    position: absolute;
+
+    width: 650px;
+    height: 650px;
+
+    top: -250px;
+    right: -150px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,237,170,.9),
+            rgba(255,245,210,.3) 40%,
+            transparent 70%
+        );
+
+    filter: blur(5px);
+
+    animation:
+        sunPulse 5s infinite alternate;
+}
+
+@keyframes sunPulse {
+
+    from {
+        transform: scale(.9);
+        opacity: .7;
+    }
+
+    to {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+.sky-cloud {
+
+    position: absolute;
+
+    width: 450px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.75);
+
+    filter: blur(12px);
+
+    animation:
+        skyCloudMove 30s linear infinite;
+}
+
+.sky-cloud.one {
+
+    left: -300px;
+    top: 20%;
+}
+
+.sky-cloud.two {
+
+    left: -500px;
+    top: 70%;
+
+    animation-delay: 8s;
+}
+
+@keyframes skyCloudMove {
+
+    to {
+        transform: translateX(150vw);
+    }
+}
+
+/* =========================================================
+   PIGEON
+========================================================= */
+
+.pigeon {
+
+    position: absolute;
+
+    bottom: -100px;
+
+    left: 45%;
+
+    font-size: 5rem;
+
+    z-index: 10;
+
+    animation:
+        pigeonFlight 8s
+        cubic-bezier(.25,.7,.4,1)
+        forwards;
+}
+
+.letter-piece {
+
+    position: absolute;
+
+    font-size: 1.4rem;
+
+    bottom: -10px;
+
+    left: 45px;
+
+    transform: rotate(20deg);
+}
+
+@keyframes pigeonFlight {
+
+    0% {
+
+        bottom: -100px;
+        left: 42%;
+
+        transform:
+            scale(.7)
+            rotate(-5deg);
+    }
+
+    20% {
+
+        bottom: 25%;
+        left: 55%;
+
+        transform:
+            scale(1)
+            rotate(5deg);
+    }
+
+    45% {
+
+        bottom: 45%;
+        left: 35%;
+
+        transform:
+            scale(1.1)
+            rotate(-8deg);
+    }
+
+    70% {
+
+        bottom: 70%;
+        left: 55%;
+
+        transform:
+            scale(.9)
+            rotate(8deg);
+    }
+
+    100% {
+
+        bottom: 120%;
+        left: 48%;
+
+        transform:
+            scale(.45)
+            rotate(-5deg);
+
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   FINAL MESSAGE
+========================================================= */
+
+.final-message {
 
     position: relative;
 
     z-index: 20;
 
-    width: 95%;
+    max-width: 850px;
 
-    max-width: 950px;
+    padding: 30px;
 
-}
+    opacity: 0;
 
-
-/* =========================================================
-   TEXT
-========================================================= */
-
-h1 {
-
-    font-size:
-        clamp(
-            3rem,
-            10vw,
-            7rem
-        );
-
-    font-weight: 700;
-
-    letter-spacing: -3px;
-
-    color: #57301d;
-
-    text-shadow:
-        0 4px 15px
-        rgba(255,255,255,.8);
-
-}
-
-
-h2 {
-
-    font-size:
-        clamp(
-            2.3rem,
-            7vw,
-            5.5rem
-        );
-
-    font-weight: 700;
-
-    letter-spacing: -2px;
-
-    color: #57301d;
-
-    text-shadow:
-        0 4px 15px
-        rgba(255,255,255,.8);
-
-}
-
-
-.big-text {
-
-    font-size:
-        clamp(
-            3rem,
-            9vw,
-            7rem
-        );
-
-    font-weight: 700;
-
-    letter-spacing: -3px;
-
-    color: #63331e;
-
-    text-shadow:
-        0 4px 15px
-        rgba(255,255,255,.8);
-
-}
-
-
-.subtitle {
-
-    margin-top: 20px;
-
-    font-size:
-        clamp(
-            1.1rem,
-            3vw,
-            1.6rem
-        );
-
-    color: #70432d;
-
-}
-
-
-.heart {
-
-    display: inline-block;
+    transform: translateY(40px);
 
     animation:
-        heartbeat 1.1s infinite;
+        finalMessageAppear
+        2.5s
+        ease
+        forwards;
 
+    animation-delay: 5s;
 }
 
+@keyframes finalMessageAppear {
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+.final-message h2 {
+
+    font-size:
+        clamp(2.2rem,6vw,5rem);
+
+    margin-bottom: 25px;
+
+    color: #52677b;
+
+    text-shadow:
+        0 3px 15px white;
+}
+
+.final-message p {
+
+    font-size:
+        clamp(1.05rem,3vw,1.5rem);
+
+    line-height: 1.9;
+}
 
 /* =========================================================
-   BUTTON
+   WHITE FLASH
 ========================================================= */
 
-button {
-
-    margin-top: 35px;
-
-    padding:
-        14px
-        35px;
-
-    border: none;
-
-    border-radius: 50px;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    font-size: 1rem;
-
-    font-weight: 600;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff675c,
-            #ff9a60
-        );
-
-    box-shadow:
-        0 8px 25px
-        rgba(160,70,30,.25);
-
-    cursor: pointer;
-
-    transition:
-        transform .25s,
-        box-shadow .25s,
-        opacity .25s;
-
-}
-
-
-button:hover {
-
-    transform:
-        translateY(-3px)
-        scale(1.05);
-
-    box-shadow:
-        0 12px 30px
-        rgba(160,70,30,.35);
-
-}
-
-
-button:disabled {
-
-    opacity: .5;
-
-    cursor: default;
-
-    transform: none;
-
-}
-
-
-/* =========================================================
-   SUN
-========================================================= */
-
-.sun {
-
-    position: fixed;
-
-    width: 180px;
-
-    height: 180px;
-
-    top: 7%;
-
-    right: 8%;
-
-    border-radius: 50%;
-
-    background:
-        #fff7a8;
-
-    box-shadow:
-
-        0 0 50px 20px
-        rgba(255,220,80,.45),
-
-        0 0 120px 60px
-        rgba(255,210,60,.2);
-
-    animation:
-        sunPulse 4s
-        ease-in-out
-        infinite;
-
-    z-index: 1;
-
-}
-
-
-/* =========================================================
-   CLOUDS
-========================================================= */
-
-.cloud {
-
-    position: fixed;
-
-    width: 170px;
-
-    height: 48px;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            .7
-        );
-
-    border-radius: 50px;
-
-    z-index: 2;
-
-    animation:
-        cloudMove
-        linear
-        infinite;
-
-}
-
-
-.cloud::before,
-.cloud::after {
-
-    content: "";
+.white-flash {
 
     position: absolute;
 
-    background: inherit;
-
-    border-radius: 50%;
-
-}
-
-
-.cloud::before {
-
-    width: 70px;
-
-    height: 70px;
-
-    left: 25px;
-
-    top: -30px;
-
-}
-
-
-.cloud::after {
-
-    width: 80px;
-
-    height: 80px;
-
-    right: 20px;
-
-    top: -38px;
-
-}
-
-
-.cloud1 {
-
-    left: -200px;
-
-    top: 20%;
-
-    animation-duration:
-        35s;
-
-}
-
-
-.cloud2 {
-
-    left: -250px;
-
-    top: 38%;
-
-    transform:
-        scale(.7);
-
-    animation-duration:
-        48s;
-
-    animation-delay:
-        7s;
-
-}
-
-
-.cloud3 {
-
-    left: -180px;
-
-    top: 58%;
-
-    transform:
-        scale(.55);
-
-    animation-duration:
-        43s;
-
-    animation-delay:
-        13s;
-
-}
-
-
-/* =========================================================
-   BIRDS
-========================================================= */
-
-.bird {
-
-    position: fixed;
-
-    z-index: 4;
-
-    font-size: 25px;
-
-    opacity: .7;
-
-    pointer-events: none;
-
-    animation:
-        birdFly
-        linear
-        infinite;
-
-}
-
-
-.bird1 {
-
-    left: -50px;
-
-    top: 22%;
-
-    animation-duration:
-        18s;
-
-}
-
-
-.bird2 {
-
-    left: -80px;
-
-    top: 30%;
-
-    animation-duration:
-        23s;
-
-    animation-delay:
-        5s;
-
-    font-size: 20px;
-
-}
-
-
-.bird3 {
-
-    left: -100px;
-
-    top: 15%;
-
-    animation-duration:
-        27s;
-
-    animation-delay:
-        10s;
-
-    font-size: 18px;
-
-}
-
-
-/* =========================================================
-   BEAUTY METER
-========================================================= */
-
-.meter-container {
-
-    width:
-        min(
-            650px,
-            90vw
-        );
-
-    margin:
-        40px auto 0;
-
-}
-
-
-.meter {
-
-    width: 100%;
-
-    height: 40px;
-
-    padding: 4px;
-
-    border-radius: 50px;
-
-    border:
-        4px solid
-        rgba(
-            80,
-            45,
-            25,
-            .3
-        );
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            .45
-        );
-
-    overflow: hidden;
-
-}
-
-
-.meter-fill {
-
-    width: 0%;
-
-    height: 100%;
-
-    border-radius: 50px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ffd05b,
-            #ff704d,
-            #ed3e57
-        );
-
-    transition:
-        width .03s linear;
-
-}
-
-
-.meter-label {
-
-    margin-top: 12px;
-
-    font-size: 1rem;
-
-    font-weight: 600;
-
-    color: #713c26;
-
-}
-
-
-/* =========================================================
-   HOT EMOJIS
-========================================================= */
-
-.hot-emoji {
-
-    position: fixed;
-
-    bottom: -80px;
-
-    z-index: 500;
-
-    pointer-events: none;
-
-    user-select: none;
-
-    animation:
-        hotFloat
-        linear
-        forwards;
-
-}
-
-
-/* =========================================================
-   EXPLOSION EMOJIS
-========================================================= */
-
-.explosion {
-
-    position: fixed;
-
-    z-index: 1000;
-
-    pointer-events: none;
-
-    user-select: none;
-
-    animation:
-        explosion
-        1.5s
-        ease-out
-        forwards;
-
-}
-
-
-/* =========================================================
-   POPUP
-========================================================= */
-
-.popup {
-
-    position: fixed;
-
     inset: 0;
 
-    z-index: 2000;
+    z-index: 30;
 
-    display: none;
+    background: white;
 
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        rgba(
-            50,
-            25,
-            10,
-            .35
-        );
-
-    backdrop-filter:
-        blur(5px);
-
-}
-
-
-.popup.show {
-
-    display: flex;
-
-}
-
-
-.popup-box {
-
-    width:
-        min(
-            560px,
-            90vw
-        );
-
-    padding:
-        40px
-        30px;
-
-    text-align: center;
-
-    border-radius: 25px;
-
-    background:
-        rgba(
-            255,
-            248,
-            220,
-            .97
-        );
-
-    border:
-        2px solid
-        rgba(
-            255,
-            160,
-            70,
-            .6
-        );
-
-    box-shadow:
-        0 20px 70px
-        rgba(
-            70,
-            35,
-            10,
-            .3
-        );
-
-    animation:
-        popupIn .35s ease;
-
-}
-
-
-.popup-box h3 {
-
-    font-size:
-        clamp(
-            2rem,
-            6vw,
-            3.5rem
-        );
-
-    color:
-        #71351f;
-
-}
-
-
-.popup-box p {
-
-    margin-top: 15px;
-
-    font-size: 1.1rem;
-
-    line-height: 1.7;
-
-    color:
-        #70422d;
-
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer {
-
-    position: fixed;
-
-    left: 0;
-
-    bottom: 18px;
-
-    width: 100%;
-
-    z-index: 100;
-
-    text-align: center;
-
-    font-size: .9rem;
-
-    font-weight: 600;
-
-    color:
-        rgba(
-            80,
-            45,
-            25,
-            .7
-        );
-
-}
-
-
-/* =========================================================
-   PAGE BROKEN EFFECT
-========================================================= */
-
-body.broken {
-
-    animation:
-        screenShake
-        .08s
-        infinite;
-
-}
-
-
-body.broken::after {
-
-    content:
-        "⚠ PAGE OVERLOADED ⚠";
-
-    position: fixed;
-
-    inset: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    z-index: 1500;
+    opacity: 0;
 
     pointer-events: none;
 
-    font-size:
-        clamp(
-            2rem,
-            8vw,
-            6rem
-        );
-
-    font-weight: 700;
-
-    color:
-        rgba(
-            255,
-            60,
-            60,
-            .15
-        );
-
-    transform:
-        rotate(-10deg);
-
+    animation:
+        whiteFlash 3s ease forwards;
 }
 
-
-/* =========================================================
-   ANIMATIONS
-========================================================= */
-
-@keyframes pageAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(20px)
-            scale(.98);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
-}
-
-
-@keyframes heartbeat {
-
-    50% {
-
-        transform:
-            scale(1.3);
-
-    }
-
-}
-
-
-@keyframes sunPulse {
-
-    50% {
-
-        transform:
-            scale(1.05);
-
-        box-shadow:
-
-            0 0 75px 30px
-            rgba(
-                255,
-                220,
-                80,
-                .5
-            ),
-
-            0 0 150px 70px
-            rgba(
-                255,
-                210,
-                60,
-                .25
-            );
-
-    }
-
-}
-
-
-@keyframes cloudMove {
-
-    from {
-
-        transform:
-            translateX(0);
-
-    }
-
-    to {
-
-        transform:
-            translateX(
-                calc(
-                    100vw + 400px
-                )
-            );
-
-    }
-
-}
-
-
-@keyframes birdFly {
+@keyframes whiteFlash {
 
     0% {
-
-        transform:
-            translateX(0)
-            translateY(0);
-
-    }
-
-    35% {
-
-        transform:
-            translateX(35vw)
-            translateY(-30px);
-
-    }
-
-    70% {
-
-        transform:
-            translateX(70vw)
-            translateY(25px);
-
-    }
-
-    100% {
-
-        transform:
-            translateX(120vw)
-            translateY(-10px);
-
-    }
-
-}
-
-
-@keyframes hotFloat {
-
-    0% {
-
-        transform:
-            translateY(0)
-            rotate(0deg)
-            scale(.5);
-
         opacity: 0;
-
     }
 
     15% {
-
-        opacity: 1;
-
-        transform:
-            translateY(-10vh)
-            rotate(30deg)
-            scale(1);
-
+        opacity: .95;
     }
 
     100% {
-
-        transform:
-            translateY(-120vh)
-            rotate(360deg)
-            scale(1.3);
-
         opacity: 0;
-
     }
-
 }
 
+/* =========================================================
+   PETALS
+========================================================= */
 
-@keyframes explosion {
+.petal {
 
-    0% {
+    position: absolute;
 
-        transform:
-            scale(.2)
-            rotate(0deg);
+    top: -50px;
 
-        opacity: 1;
+    font-size: 1.3rem;
 
-    }
+    pointer-events: none;
 
-    40% {
-
-        transform:
-            scale(2.5)
-            rotate(120deg);
-
-        opacity: 1;
-
-    }
-
-    100% {
-
-        transform:
-            scale(5)
-            rotate(360deg);
-
-        opacity: 0;
-
-    }
-
+    animation:
+        fall linear forwards;
 }
 
-
-@keyframes popupIn {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            scale(.85);
-
-    }
+@keyframes fall {
 
     to {
 
-        opacity: 1;
-
         transform:
-            scale(1);
+            translateY(110vh)
+            rotate(500deg);
 
+        opacity: 0;
     }
-
 }
-
-
-@keyframes screenShake {
-
-    0% {
-        transform:
-            translate(0,0)
-            rotate(0);
-    }
-
-    25% {
-        transform:
-            translate(-5px,4px)
-            rotate(-.5deg);
-    }
-
-    50% {
-        transform:
-            translate(5px,-4px)
-            rotate(.5deg);
-    }
-
-    75% {
-        transform:
-            translate(-4px,-3px)
-            rotate(-.4deg);
-    }
-
-    100% {
-        transform:
-            translate(0,0)
-            rotate(0);
-    }
-
-}
-
 
 /* =========================================================
    MOBILE
@@ -1104,291 +1336,79 @@ body.broken::after {
 
 @media(max-width:600px) {
 
-    .sun {
-
-        width: 110px;
-
-        height: 110px;
-
-        right: 4%;
-
+    .church-content {
+        padding-top: 20px;
     }
 
-    h1,
-    .big-text {
-
-        letter-spacing:
-            -2px;
-
+    .form-card {
+        padding: 20px;
     }
 
+    .candles {
+        gap: 12px;
+    }
+
+    .candle {
+        font-size: 2.7rem;
+    }
+
+    .prayer-card {
+        padding: 22px;
+    }
+
+    .letter-container {
+        margin: 30px 0;
+    }
+
+    .letter-text {
+        font-size: .95rem;
+    }
+
+    .pigeon {
+        font-size: 4rem;
+    }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
 
 <!-- =====================================================
-     MORNING BACKGROUND
+     1. CHURCH DOOR
 ===================================================== -->
 
-<div class="sun"></div>
+<section id="doorScreen" class="screen active">
 
-<div class="cloud cloud1"></div>
+    <div class="door-atmosphere">
 
-<div class="cloud cloud2"></div>
-
-<div class="cloud cloud3"></div>
-
-<div class="bird bird1">
-    🕊️
-</div>
-
-<div class="bird bird2">
-    🕊️
-</div>
-
-<div class="bird bird3">
-    🕊️
-</div>
-
-
-<!-- =====================================================
-     PAGE 1
-===================================================== -->
-
-<section
-    class="page active"
-    id="page1"
->
-
-    <div class="content">
-
-        <h1>
-
-            Good Morning, Love
-
-            <span class="heart">
-                ❤️
-            </span>
-
-        </h1>
-
-        <p class="subtitle">
-            Hey you.
-        </p>
-
-        <button
-            onclick="nextPage(2)"
-        >
-            Next →
-        </button>
+        <div class="door-light"></div>
 
     </div>
 
-</section>
+    <div class="door-content">
 
-
-<!-- =====================================================
-     PAGE 2
-===================================================== -->
-
-<section
-    class="page"
-    id="page2"
->
-
-    <div class="content">
-
-        <div class="big-text">
-            Yes, you. ❤️
+        <div class="door-title">
+            Welcome to the Church
         </div>
 
-        <button
-            onclick="nextPage(3)"
-        >
-            Next →
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PAGE 3
-===================================================== -->
-
-<section
-    class="page"
-    id="page3"
->
-
-    <div class="content">
-
-        <div class="big-text">
-            I'm talking about you.
+        <div class="door-subtitle">
+            A quiet place for memories, love and prayers.
         </div>
 
-        <button
-            onclick="nextPage(4)"
-        >
-            Next →
-        </button>
+        <div class="church-door">
 
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PAGE 4
-===================================================== -->
-
-<section
-    class="page"
-    id="page4"
->
-
-    <div class="content">
-
-        <div class="big-text">
-            I swear, I'm talking about you. ❤️
-        </div>
-
-        <button
-            onclick="nextPage(5)"
-        >
-            Next →
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PAGE 5
-===================================================== -->
-
-<section
-    class="page"
-    id="page5"
->
-
-    <div class="content">
-
-        <div class="big-text">
-            It's really you.
-        </div>
-
-        <button
-            onclick="nextPage(6)"
-        >
-            Next →
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PAGE 6
-===================================================== -->
-
-<section
-    class="page"
-    id="page6"
->
-
-    <div class="content">
-
-        <h2>
-            Why you?
-        </h2>
-
-        <button
-            onclick="nextPage(7)"
-        >
-            Next →
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PAGE 7
-     BEAUTY LEVEL
-===================================================== -->
-
-<section
-    class="page"
-    id="page7"
->
-
-    <div class="content">
-
-        <h2>
-            Tell me why did you steal my heart, huh? ❤️
-        </h2>
-
-        <p class="subtitle">
-            Maybe you're beautiful.
-        </p>
-
-
-        <div
-            class="meter-container"
-            id="beautyMeter"
-        >
-
-            <div class="meter">
-
-                <div
-                    class="meter-fill"
-                    id="meterFill"
-                ></div>
-
+            <div class="door-cross">
+                ✝
             </div>
 
-
-            <div
-                class="meter-label"
-                id="meterLabel"
-            >
-                BEAUTY LEVEL: 0%
-            </div>
-
-        </div>
-
-
-        <button
-            id="beautyButton"
-            onclick="startBeautyMeter()"
-        >
-            Tap to check your beauty level ✨
-        </button>
-
-
-        <!-- This button appears only
-             after the meter reaches 100% -->
-
-        <div
-            id="beautyNext"
-            style="display:none;"
-        >
+            <div class="door-handle"></div>
 
             <button
-                onclick="nextPage(8)"
+                class="gold-button door-enter"
+                onclick="openChurch()"
             >
-                Next → 🥵
+                ✦ PRESS ENTER ✦
             </button>
 
         </div>
@@ -1399,40 +1419,176 @@ body.broken::after {
 
 
 <!-- =====================================================
-     PAGE 8
-     HOTNESS
+     2. CHURCH
 ===================================================== -->
 
-<section
-    class="page"
-    id="page8"
->
+<section id="churchScreen" class="screen">
 
-    <div class="content">
+    <div class="church-rays"></div>
 
-        <h2>
-            Last check...
-        </h2>
+    <div class="church-content">
 
-
-        <div
-            class="big-text"
-            style="margin-top:15px;"
-        >
-            Check your hotness level 🥵
+        <div class="christ">
+            ✝️
         </div>
 
+        <div class="flower-row">
+            🌹 🌸 🌼 🌺 🌷
+        </div>
 
-        <p class="subtitle">
-            Let's see if the page can handle it.
+        <h1 class="church-heading">
+            Welcome, my child.
+        </h1>
+
+        <p class="church-text">
+            Tell us who you are and who you wish to send your letter to.
         </p>
 
+        <div class="form-card">
+
+            <div class="input-group">
+
+                <label>
+                    Your Name
+                </label>
+
+                <input
+                    id="userName"
+                    type="text"
+                    placeholder="Enter your name"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    Your Age
+                </label>
+
+                <input
+                    id="userAge"
+                    type="number"
+                    placeholder="Enter your age"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    Your City
+                </label>
+
+                <input
+                    id="userCity"
+                    type="text"
+                    placeholder="Enter your city"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    Who do you want to send a letter to?
+                </label>
+
+                <input
+                    id="letterTo"
+                    type="text"
+                    placeholder="Enter their name"
+                >
+
+            </div>
+
+
+            <button
+                class="gold-button"
+                onclick="startSearch()"
+            >
+                Enter
+            </button>
+
+
+            <div
+                id="formError"
+                class="form-error"
+            >
+                Please fill in all the text boxes.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     3. SEARCH
+===================================================== -->
+
+<section id="searchScreen" class="screen">
+
+    <div class="cloud one"></div>
+    <div class="cloud two"></div>
+    <div class="cloud three"></div>
+
+    <div class="search-content">
+
+        <div class="magnifier">
+            🔍
+        </div>
+
+        <div
+            id="searchText"
+            class="search-text"
+        >
+            Opening the records...
+        </div>
+
+        <div class="search-dots">
+            • • •
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     4. FOUND
+===================================================== -->
+
+<section id="foundScreen" class="screen">
+
+    <div class="found-content">
+
+        <div class="found-small">
+            MEMORY FOUND
+        </div>
+
+        <div class="found-name">
+            Mr. Blabla
+        </div>
+
+        <img
+            class="photo-preview"
+            src="dadpng.png"
+            alt="Photo"
+        >
+
+        <br>
 
         <button
-            id="hotButton"
-            onclick="checkHotness()"
+            class="gold-button pray-button"
+            onclick="openPrayer()"
         >
-            Tap to check 🥵
+            🕯️ CLICK TO PRAY
         </button>
 
     </div>
@@ -1441,518 +1597,568 @@ body.broken::after {
 
 
 <!-- =====================================================
-     POPUP
+     5. PRAYER
 ===================================================== -->
 
-<div
-    class="popup"
-    id="popup"
->
+<section id="prayerScreen" class="screen">
 
-    <div class="popup-box">
+    <div class="prayer-content">
 
-        <h3
-            id="popupTitle"
-        ></h3>
+        <div class="candles">
 
-        <p
-            id="popupText"
-        ></p>
+            <span
+                id="candle1"
+                class="candle"
+            >
+                🕯️
+            </span>
+
+            <span
+                id="candle2"
+                class="candle"
+            >
+                🕯️
+            </span>
+
+            <span
+                id="candle3"
+                class="candle"
+            >
+                🕯️
+            </span>
+
+        </div>
+
+
+        <div class="prayer-card">
+
+            <h2>
+                Send a Prayer
+            </h2>
+
+            <p>
+                Write anything you wish you could say.
+            </p>
+
+            <textarea
+                id="prayerInput"
+                class="prayer-input"
+                placeholder="Write your prayer for your dad here..."
+            ></textarea>
+
+            <br>
+
+            <button
+                class="gold-button"
+                onclick="showLetter()"
+            >
+                Send Prayer
+            </button>
+
+            <div
+                id="prayerError"
+                class="form-error"
+            >
+                Please write your prayer before sending.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     6. LETTER
+===================================================== -->
+
+<section id="letterScreen" class="screen">
+
+    <div
+        id="letterContainer"
+        class="letter-container"
+    >
+
+        <div class="flower-frame">
+
+            <div class="flower-top">
+                🌹 🌸 🌼 🌺 🌷
+            </div>
+
+            <img
+                class="letter-photo"
+                src="dadpng.png"
+                alt="Dad"
+            >
+
+            <div
+                id="letterText"
+                class="letter-text"
+            ></div>
+
+            <div class="flower-bottom">
+                🌷 🌺 🌼 🌸 🌹
+            </div>
+
+        </div>
+
 
         <button
-            onclick="closePopup()"
+            class="gold-button confirm-button"
+            onclick="confirmSend()"
         >
-            Okay ❤️
+            ✉️ CONFIRM SEND
         </button>
 
     </div>
 
-</div>
+</section>
 
 
 <!-- =====================================================
-     FOOTER
+     7. FINAL SKY
 ===================================================== -->
 
-<footer class="footer">
+<section id="finalScreen" class="screen">
 
-    Have a good day ❤️
+    <div class="sun"></div>
 
-</footer>
+    <div class="sky-cloud one"></div>
+    <div class="sky-cloud two"></div>
+
+
+    <div class="pigeon">
+
+        🕊️
+
+        <span class="letter-piece">
+            💌
+        </span>
+
+    </div>
+
+
+    <div class="white-flash"></div>
+
+
+    <div class="final-message">
+
+        <h2>
+            Your prayer has been heard.
+        </h2>
+
+        <p>
+
+            My child, your love does not disappear
+            just because someone is no longer beside you.
+
+            <br><br>
+
+            Your memories remain.
+            Your love remains.
+            And every word you carry in your heart
+            can remain a beautiful part of you.
+
+            <br><br>
+
+            Keep going.
+
+            <br>
+
+            Take care of yourself.
+
+            <br><br>
+
+            Carry the love you shared with your dad
+            wherever you go.
+
+            <br><br>
+
+            <strong>
+                You are not alone in your memories. ❤️
+            </strong>
+
+        </p>
+
+    </div>
+
+</section>
 
 
 <script>
 
+/* =========================================================
+   SCREEN NAVIGATION
+========================================================= */
 
-/* =====================================================
-   PAGE NAVIGATION
-===================================================== */
-
-let currentPage = 1;
-
-
-function nextPage(pageNumber) {
+function showScreen(id) {
 
     document
-        .getElementById(
-            "page" + currentPage
-        )
-        .classList
-        .remove("active");
+        .querySelectorAll(".screen")
+        .forEach(screen => {
 
+            screen.classList.remove("active");
 
-    currentPage =
-        pageNumber;
-
+        });
 
     document
-        .getElementById(
-            "page" + currentPage
-        )
-        .classList
-        .add("active");
-
+        .getElementById(id)
+        .classList.add("active");
 }
 
 
-/* =====================================================
-   POPUP
-===================================================== */
+/* =========================================================
+   DOOR
+========================================================= */
 
-function showPopup(
-    title,
-    message
-) {
+function openChurch() {
 
-    document
-        .getElementById(
-            "popupTitle"
-        )
-        .textContent =
-        title;
+    const door =
+        document.querySelector(".church-door");
 
+    door.style.transition =
+        "1.8s cubic-bezier(.7,0,.2,1)";
 
-    document
-        .getElementById(
-            "popupText"
-        )
-        .textContent =
-        message;
+    door.style.transform =
+        "perspective(1200px) rotateY(-75deg)";
 
+    door.style.boxShadow =
+        "0 0 100px rgba(255,220,150,.5)";
 
-    document
-        .getElementById(
-            "popup"
-        )
-        .classList
-        .add("show");
+    setTimeout(() => {
 
+        showScreen("churchScreen");
+
+        createPetals();
+
+    }, 1200);
 }
 
 
-function closePopup() {
+/* =========================================================
+   FORM / SEARCH
+========================================================= */
 
-    document
-        .getElementById(
-            "popup"
-        )
-        .classList
-        .remove("show");
+function startSearch() {
 
+    const fields = [
 
-    /*
-       If beauty reached 100,
-       reveal the Next button.
-    */
+        document.getElementById("userName"),
 
-    if (
-        beautyFinished
-    ) {
+        document.getElementById("userAge"),
 
-        document
-            .getElementById(
-                "beautyNext"
-            )
-            .style.display =
-            "block";
+        document.getElementById("userCity"),
 
-    }
+        document.getElementById("letterTo")
 
-}
+    ];
 
 
-/* =====================================================
-   BEAUTY METER
-===================================================== */
-
-let beautyFinished = false;
-
-let beautyRunning = false;
+    const empty =
+        fields.some(field =>
+            field.value.trim() === ""
+        );
 
 
-function startBeautyMeter() {
+    if (empty) {
 
-    if (beautyRunning) {
+        const error =
+            document.getElementById("formError");
+
+        error.style.display = "block";
+
+        error.style.animation = "none";
+
+        void error.offsetWidth;
+
+        error.style.animation =
+            "shake .35s";
+
         return;
     }
 
 
-    beautyRunning = true;
+    document
+        .getElementById("formError")
+        .style.display = "none";
 
 
-    const meter =
-        document
-            .getElementById(
-                "meterFill"
-            );
+    showScreen("searchScreen");
 
 
-    const label =
-        document
-            .getElementById(
-                "meterLabel"
-            );
+    runSearch();
+}
 
 
-    const button =
-        document
-            .getElementById(
-                "beautyButton"
-            );
+/* =========================================================
+   SEARCH CINEMATIC SEQUENCE
+========================================================= */
+
+function runSearch() {
+
+    const searchText =
+        document.getElementById("searchText");
 
 
-    button.disabled = true;
+    const messages = [
+
+        "Opening the records...",
+
+        "Searching through the memories...",
+
+        "Searching your dad's data in heaven...",
+
+        "Looking among the stars...",
+
+        "Searching for Mr. Blabla..."
+
+    ];
 
 
-    let value = 0;
+    let index = 0;
 
 
-    /*
-       Start from ZERO
-       and climb to 100.
-    */
+    searchText.textContent =
+        messages[0];
+
 
     const interval =
-        setInterval(
-            function() {
+        setInterval(() => {
 
-                value++;
+            index++;
 
+            if (index < messages.length) {
 
-                meter.style.width =
-                    value + "%";
+                searchText.style.opacity = "0";
 
+                setTimeout(() => {
 
-                label.textContent =
-                    "BEAUTY LEVEL: " +
-                    value +
-                    "%";
+                    searchText.textContent =
+                        messages[index];
 
+                    searchText.style.opacity = "1";
 
-                /*
-                   Reached 100
-                */
+                }, 200);
+            }
 
-                if (
-                    value >= 100
-                ) {
-
-                    clearInterval(
-                        interval
-                    );
+        }, 900);
 
 
-                    beautyFinished =
-                        true;
+    setTimeout(() => {
 
+        clearInterval(interval);
 
-                    /*
-                       Popup after meter
-                       reaches 100.
-                    */
+        showScreen("foundScreen");
 
-                    setTimeout(
-                        function() {
-
-                            showPopup(
-                                "DEYMMM... 😳❤️",
-                                "You so pretty! The meter reached 100%. Guess it's not enough to measure your beauty."
-                            );
-
-                        },
-                        300
-                    );
-
-                }
-
-            },
-            25
-        );
-
+    }, 5000);
 }
 
 
-/* =====================================================
-   CREATE HOT EMOJI
-===================================================== */
+/* =========================================================
+   PRAYER
+========================================================= */
 
-function createHotEmoji() {
+function openPrayer() {
 
-    const emoji =
-        document.createElement(
-            "div"
-        );
+    showScreen("prayerScreen");
 
 
-    emoji.className =
-        "hot-emoji";
+    setTimeout(() => {
+
+        document
+            .getElementById("candle1")
+            .classList.add("lit");
+
+    }, 300);
 
 
-    emoji.textContent =
-        "🥵";
+    setTimeout(() => {
+
+        document
+            .getElementById("candle2")
+            .classList.add("lit");
+
+    }, 700);
 
 
-    emoji.style.left =
-        Math.random() *
-        100 +
-        "vw";
+    setTimeout(() => {
 
+        document
+            .getElementById("candle3")
+            .classList.add("lit");
 
-    emoji.style.fontSize =
-        (
-            25 +
-            Math.random() * 60
-        ) +
-        "px";
-
-
-    emoji.style.animationDuration =
-        (
-            2.5 +
-            Math.random() * 4
-        ) +
-        "s";
-
-
-    document.body.appendChild(
-        emoji
-    );
-
-
-    setTimeout(
-        function() {
-
-            emoji.remove();
-
-        },
-        8000
-    );
-
+    }, 1100);
 }
 
 
-/* =====================================================
-   HOTNESS EXPLOSION
-===================================================== */
+/* =========================================================
+   SHOW LETTER
+========================================================= */
 
-let hotnessStarted = false;
+function showLetter() {
+
+    const prayer =
+        document
+            .getElementById("prayerInput")
+            .value
+            .trim();
 
 
-function checkHotness() {
+    if (prayer === "") {
 
-    if (
-        hotnessStarted
-    ) {
+        const error =
+            document.getElementById("prayerError");
+
+        error.style.display = "block";
 
         return;
-
     }
 
 
-    hotnessStarted =
-        true;
+    document
+        .getElementById("prayerError")
+        .style.display = "none";
 
 
-    const button =
-        document
-            .getElementById(
-                "hotButton"
-            );
+    document
+        .getElementById("letterText")
+        .textContent = prayer;
 
 
-    button.disabled =
-        true;
-
-
-    /*
-       START SCREEN SHAKE
-    */
-
-    document.body
-        .classList
-        .add("broken");
-
-
-    /*
-       MASSIVE EMOJI FLOOD
-    */
-
-    for (
-        let i = 0;
-        i < 250;
-        i++
-    ) {
-
-        setTimeout(
-            function() {
-
-                createHotEmoji();
-
-            },
-            i * 20
-        );
-
-    }
-
-
-    /*
-       RANDOM POPPING EMOJIS
-    */
-
-    for (
-        let i = 0;
-        i < 150;
-        i++
-    ) {
-
-        setTimeout(
-            function() {
-
-                const emoji =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                emoji.className =
-                    "explosion";
-
-
-                emoji.textContent =
-                    "🥵";
-
-
-                emoji.style.left =
-                    Math.random() *
-                    100 +
-                    "vw";
-
-
-                emoji.style.top =
-                    Math.random() *
-                    100 +
-                    "vh";
-
-
-                emoji.style.fontSize =
-                    (
-                        20 +
-                        Math.random() * 70
-                    ) +
-                    "px";
-
-
-                document.body
-                    .appendChild(
-                        emoji
-                    );
-
-
-                setTimeout(
-                    function() {
-
-                        emoji.remove();
-
-                    },
-                    1600
-                );
-
-            },
-            i * 15
-        );
-
-    }
-
-
-    /*
-       FIRST POPUP
-    */
-
-    setTimeout(
-        function() {
-
-            showPopup(
-                "YOU'RE TOO HOT! 🥵🔥",
-                "There are way too many hot emojis! The page can't handle this!"
-            );
-
-        },
-        2500
-    );
-
-
-    /*
-       SECOND POPUP
-    */
-
-    setTimeout(
-        function() {
-
-            closePopup();
-
-
-            setTimeout(
-                function() {
-
-                    showPopup(
-                        "THE PAGE BROKE! 💥🥵",
-                        "Yep... you were officially too hot for the website. 😂❤️"
-                    );
-
-                },
-                400
-            );
-
-
-        },
-        5500
-    );
-
+    showScreen("letterScreen");
 }
 
 
-/* =====================================================
-   CONTINUOUS HOT EMOJIS
-===================================================== */
+/* =========================================================
+   CONFIRM SEND
+========================================================= */
 
-setInterval(
-    function() {
+function confirmSend() {
+
+    const letter =
+        document.getElementById("letterContainer");
+
+
+    letter.style.transition =
+        "1.3s cubic-bezier(.7,0,.2,1)";
+
+    letter.style.opacity = "0";
+
+    letter.style.transform =
+        "translateY(-50px) scale(.75)";
+
+
+    setTimeout(() => {
+
+        showScreen("finalScreen");
+
+        createPetals();
+
+        restartPigeon();
+
+    }, 1200);
+}
+
+
+/* =========================================================
+   PIGEON RESET
+========================================================= */
+
+function restartPigeon() {
+
+    const pigeon =
+        document.querySelector(".pigeon");
+
+
+    pigeon.style.animation = "none";
+
+
+    void pigeon.offsetWidth;
+
+
+    pigeon.style.animation =
+        "pigeonFlight 8s cubic-bezier(.25,.7,.4,1) forwards";
+}
+
+
+/* =========================================================
+   FLOWING PETALS
+========================================================= */
+
+function createPetals() {
+
+    const flowers = [
+        "🌸",
+        "🌹",
+        "🌺",
+        "🌷"
+    ];
+
+
+    for (let i = 0; i < 18; i++) {
+
+        const petal =
+            document.createElement("div");
+
+        petal.className = "petal";
+
+        petal.textContent =
+            flowers[
+                Math.floor(
+                    Math.random() * flowers.length
+                )
+            ];
+
+
+        petal.style.left =
+            Math.random() * 100 + "%";
+
+
+        petal.style.animationDuration =
+            (5 + Math.random() * 6) + "s";
+
+
+        petal.style.animationDelay =
+            Math.random() * 3 + "s";
+
+
+        document.body.appendChild(petal);
+
+
+        setTimeout(() => {
+
+            petal.remove();
+
+        }, 12000);
+    }
+}
+
+
+/* =========================================================
+   ENTER KEY SUPPORT
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
 
         if (
-            currentPage === 8 &&
-            hotnessStarted
+            event.key === "Enter" &&
+            document
+                .getElementById("doorScreen")
+                .classList.contains("active")
         ) {
 
-            createHotEmoji();
+            openChurch();
 
         }
 
-    },
-    250
+    }
 );
-
 
 </script>
 
 </body>
 </html>
+```
