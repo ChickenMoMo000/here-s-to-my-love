@@ -1,55 +1,38 @@
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width,
-             initial-scale=1.0,
-             maximum-scale=1.0,
-             user-scalable=no"
->
-
-<meta name="theme-color" content="#080604">
-
-<title>A Letter to Heaven</title>
-
-
-<style>
-
+```css
 /* =========================================================
-   GLOBAL RESET
+   MOBILE-FIRST RESET
 ========================================================= */
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
 }
 
 html,
 body {
     width: 100%;
-    min-height: 100%;
+    height: 100%;
 
     overflow: hidden;
+
+    background: #050505;
 
     font-family:
         Georgia,
         "Times New Roman",
         serif;
-
-    background: #050505;
-
-    color: white;
 }
 
 body {
+    width: 100vw;
     min-height: 100dvh;
+
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
 }
 
 
@@ -66,6 +49,8 @@ body {
     width: 100%;
     height: 100dvh;
 
+    max-width: 100vw;
+
     overflow-x: hidden;
 
     opacity: 0;
@@ -75,8 +60,7 @@ body {
     pointer-events: none;
 
     transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
+        opacity .8s ease;
 }
 
 .screen.active {
@@ -90,362 +74,203 @@ body {
 
 
 /* =========================================================
-   TOUCH FRIENDLY BUTTON
+   BUTTONS
 ========================================================= */
 
 .gold-button {
 
-    min-height: 52px;
+    display: inline-flex;
 
-    min-width: 160px;
+    align-items: center;
 
-    padding:
-        14px 26px;
+    justify-content: center;
 
-    border:
+    width: auto;
 
-        1px solid
-        rgba(245,211,137,.75);
+    min-width: 170px;
 
-    border-radius:
-        999px;
+    min-height: 50px;
+
+    padding: 13px 22px;
+
+    border: 1px solid #d8b96d;
+
+    border-radius: 50px;
 
     background:
-
         linear-gradient(
             135deg,
-            #e5c979,
-            #9e7230
+            #e7ce85,
+            #9b7133
         );
 
-    color:
-        #1a1107;
+    color: #171006;
 
     font-family:
         Georgia,
         serif;
 
-    font-size:
-        15px;
+    font-size: 15px;
 
-    font-weight:
-        bold;
+    font-weight: bold;
 
-    letter-spacing:
-        1px;
+    letter-spacing: .7px;
 
-    cursor:
-        pointer;
+    cursor: pointer;
+
+    touch-action: manipulation;
 
     box-shadow:
-
-        0 0 20px
-        rgba(230,190,100,.25),
-
-        inset 0 1px
-        rgba(255,255,255,.55);
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-
-    touch-action:
-        manipulation;
+        0 0 25px
+        rgba(225,185,90,.25);
 }
 
 .gold-button:active {
-
-    transform:
-        scale(.96);
-}
-
-@media (hover:hover) {
-
-    .gold-button:hover {
-
-        transform:
-            translateY(-3px)
-            scale(1.02);
-
-        box-shadow:
-
-            0 0 35px
-            rgba(255,210,100,.55),
-
-            0 10px 35px
-            rgba(0,0,0,.5);
-    }
+    transform: scale(.96);
 }
 
 
 /* =========================================================
-   SCREEN 1 — DOOR
+   SCREEN 1
+   DOOR
 ========================================================= */
 
 #doorScreen {
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
-
-    text-align:
-        center;
+    justify-content: center;
 
     padding:
-        20px;
+        20px 15px;
+
+    text-align: center;
 
     background:
-
         radial-gradient(
-            ellipse at center,
-            rgba(107,82,54,.55),
-            transparent 48%
-        ),
-
-        linear-gradient(
-            #0d0b09,
-            #030303
+            circle at center,
+            #3a2a1b,
+            #070604 65%
         );
-}
-
-.door-atmosphere {
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    overflow:
-        hidden;
-}
-
-.door-light {
-
-    position:
-        absolute;
-
-    width:
-        min(500px,120vw);
-
-    height:
-        min(500px,120vw);
-
-    left:
-        50%;
-
-    top:
-        35%;
-
-    transform:
-        translate(-50%,-50%);
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(255,218,145,.12),
-            transparent 70%
-        );
-
-    animation:
-        breathingLight 5s
-        infinite alternate;
-}
-
-@keyframes breathingLight {
-
-    from {
-
-        opacity:
-            .3;
-
-        transform:
-            translate(-50%,-50%)
-            scale(.8);
-    }
-
-    to {
-
-        opacity:
-            .8;
-
-        transform:
-            translate(-50%,-50%)
-            scale(1.15);
-    }
 }
 
 .door-content {
 
-    position:
-        relative;
+    position: relative;
 
-    z-index:
-        5;
+    width: 100%;
 
-    width:
-        100%;
+    max-width: 390px;
 
-    max-width:
-        700px;
+    height: 100%;
 
-    display:
-        flex;
+    display: flex;
 
-    flex-direction:
-        column;
+    flex-direction: column;
 
-    align-items:
-        center;
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        15px 0;
 }
 
 .door-title {
 
+    width: 100%;
+
     font-size:
         clamp(
-            2rem,
+            1.8rem,
             9vw,
-            5.5rem
+            3rem
         );
 
-    line-height:
-        1.1;
+    line-height: 1.08;
 
-    letter-spacing:
-        clamp(
-            1px,
-            1.2vw,
-            5px
-        );
+    letter-spacing: 1px;
 
     text-shadow:
-
-        0 0 10px
-        rgba(255,255,255,.3),
-
-        0 0 40px
-        rgba(224,187,105,.35);
-
-    animation:
-        titleAppear 2s ease;
-
-    max-width:
-        95vw;
+        0 0 20px
+        rgba(255,220,150,.3);
 }
 
 .door-subtitle {
 
-    margin-top:
-        14px;
+    width: 100%;
 
-    color:
-        #c9bda8;
+    max-width: 330px;
+
+    margin-top: 10px;
+
+    color: #bcae98;
 
     font-size:
         clamp(
-            .85rem,
-            3.5vw,
-            1.1rem
+            .8rem,
+            3.8vw,
+            1rem
         );
 
-    line-height:
-        1.5;
-
-    max-width:
-        360px;
+    line-height: 1.45;
 }
+
+
+/* Door itself */
 
 .church-door {
 
+    position: relative;
+
     width:
         min(
-            300px,
-            68vw
+            68vw,
+            245px
         );
 
     height:
         min(
-            430px,
-            52dvh
+            43vh,
+            330px
         );
 
-    min-height:
-        300px;
+    min-height: 245px;
 
-    margin:
-        38px auto 0;
-
-    position:
-        relative;
+    margin-top: 24px;
 
     background:
-
         linear-gradient(
             90deg,
-            #160c06,
-            #56351e 48%,
-            #170b05
+            #140a05,
+            #55331c,
+            #160a04
         );
 
     border:
-        clamp(8px,2.5vw,13px)
-        solid
-        #745035;
+        9px solid #725033;
 
     border-radius:
-        180px
-        180px
-        10px
-        10px;
+        130px
+        130px
+        8px
+        8px;
 
     box-shadow:
-
-        inset 0 0 60px #000,
-
-        0 0 50px
+        inset 0 0 45px #000,
+        0 0 40px
         rgba(0,0,0,.8);
-
-    transform-origin:
-        left center;
-
-    animation:
-        doorIdle 6s
-        infinite ease-in-out;
-}
-
-@keyframes doorIdle {
-
-    0%,100% {
-
-        transform:
-            perspective(1000px)
-            rotateY(0deg);
-    }
-
-    50% {
-
-        transform:
-            perspective(1000px)
-            rotateY(-2deg);
-    }
 }
 
 .door-cross {
 
-    position:
-        absolute;
+    position: absolute;
 
-    left:
-        50%;
+    left: 50%;
 
-    top:
-        36%;
+    top: 38%;
 
     transform:
         translate(-50%,-50%);
@@ -453,552 +278,296 @@ body {
     font-size:
         clamp(
             3rem,
-            14vw,
+            15vw,
             4rem
         );
 
-    color:
-        #c9a85b;
+    color: #c9a75e;
 
-    opacity:
-        .55;
+    opacity: .65;
 
     text-shadow:
-        0 0 20px #d8b865;
+        0 0 20px
+        #d4b66b;
 }
 
 .door-handle {
 
-    position:
-        absolute;
+    position: absolute;
 
-    right:
-        8%;
+    right: 12%;
 
-    top:
-        55%;
+    top: 53%;
 
-    width:
-        18px;
+    width: 15px;
 
-    height:
-        18px;
+    height: 15px;
 
-    border-radius:
-        50%;
+    border-radius: 50%;
 
-    background:
-        #d4ad5e;
+    background: #d5ae60;
 
     box-shadow:
-        0 0 15px #d4ad5e;
+        0 0 15px
+        #d5ae60;
 }
+
+
+/*
+   IMPORTANT:
+   Button is now INSIDE the visual layout
+   instead of being positioned below the door.
+*/
 
 .door-enter {
 
-    position:
-        absolute;
+    position: absolute;
 
-    bottom:
-        -72px;
+    left: 50%;
 
-    left:
-        50%;
+    bottom: -65px;
 
     transform:
         translateX(-50%);
 
-    white-space:
-        nowrap;
+    white-space: nowrap;
+
+    min-width: 155px;
+
+    font-size: 13px;
 }
 
 
 /* =========================================================
-   SCREEN 2 — CHURCH
+   SCREEN 2
+   CHURCH
 ========================================================= */
 
 #churchScreen {
 
-    display:
-        block;
+    overflow-y: auto;
 
-    overflow-y:
-        auto;
+    overflow-x: hidden;
 
-    overflow-x:
-        hidden;
-
-    -webkit-overflow-scrolling:
-        touch;
+    -webkit-overflow-scrolling: touch;
 
     background:
-
         radial-gradient(
-            ellipse at center top,
-            rgba(135,112,78,.7),
-            transparent 35%
-        ),
-
-        linear-gradient(
-            180deg,
-            #21180f,
-            #080604 80%
+            circle at 50% 0%,
+            #59452d,
+            #080604 60%
         );
-}
-
-.church-rays {
-
-    position:
-        fixed;
-
-    inset:
-        0;
-
-    pointer-events:
-        none;
-
-    background:
-
-        linear-gradient(
-            110deg,
-            transparent 30%,
-            rgba(255,220,150,.05),
-            transparent 45%
-        ),
-
-        linear-gradient(
-            70deg,
-            transparent 30%,
-            rgba(255,220,150,.04),
-            transparent 45%
-        );
-
-    animation:
-        raysMove 12s
-        infinite linear;
-}
-
-@keyframes raysMove {
-
-    from {
-
-        transform:
-            translateX(-20%);
-    }
-
-    to {
-
-        transform:
-            translateX(20%);
-    }
 }
 
 .church-content {
 
-    position:
-        relative;
-
-    z-index:
-        5;
-
     width:
         min(
-            900px,
-            94%
+            100%,
+            390px
         );
 
-    margin:
-        0 auto;
+    margin: 0 auto;
+
+    min-height: 100%;
 
     padding:
-        40px 0
-        70px;
+        25px 15px
+        45px;
 
-    text-align:
-        center;
+    text-align: center;
 }
 
 .christ {
 
     font-size:
         clamp(
-            7rem,
-            28vw,
-            15rem
+            5rem,
+            24vw,
+            8rem
         );
 
-    line-height:
-        .9;
+    line-height: .9;
 
     filter:
         drop-shadow(
             0 0 20px
-            rgba(255,220,150,.3)
+            rgba(255,220,150,.35)
         );
-
-    animation:
-        christFloat 5s
-        infinite ease-in-out;
-}
-
-@keyframes christFloat {
-
-    0%,100% {
-
-        transform:
-            translateY(0);
-    }
-
-    50% {
-
-        transform:
-            translateY(-8px);
-    }
 }
 
 .flower-row {
 
+    width: 100%;
+
     margin:
-        18px 0;
+        10px 0 12px;
 
     font-size:
         clamp(
-            1.5rem,
+            1.2rem,
             6vw,
-            4rem
+            2rem
         );
 
-    letter-spacing:
-        clamp(
-            1px,
-            2vw,
-            8px
-        );
-
-    white-space:
-        nowrap;
-
-    animation:
-        flowerGlow 4s
-        infinite alternate;
-}
-
-@keyframes flowerGlow {
-
-    from {
-        filter:
-            brightness(.8);
-    }
-
-    to {
-        filter:
-            brightness(1.25);
-    }
+    white-space: nowrap;
 }
 
 .church-heading {
 
     font-size:
         clamp(
-            1.8rem,
-            7vw,
-            3.5rem
+            1.65rem,
+            8vw,
+            2.5rem
         );
 
-    line-height:
-        1.15;
+    line-height: 1.1;
 
-    margin-bottom:
-        10px;
+    margin-bottom: 8px;
 }
 
 .church-text {
 
-    color:
-        #cfc0a6;
+    width: 100%;
+
+    color: #c7b89f;
 
     font-size:
         clamp(
-            .9rem,
+            .8rem,
             3.5vw,
-            1rem
+            .95rem
         );
 
-    line-height:
-        1.6;
+    line-height: 1.5;
 
-    margin-bottom:
-        25px;
+    margin-bottom: 18px;
 }
+
+
+/* =========================================================
+   FORM
+========================================================= */
 
 .form-card {
 
-    width:
-        100%;
-
-    margin:
-        0 auto;
+    width: 100%;
 
     padding:
-        clamp(
-            20px,
-            6vw,
-            30px
-        );
+        18px 15px;
 
-    border-radius:
-        20px;
+    border-radius: 17px;
 
     background:
-        rgba(8,6,4,.78);
+        rgba(5,4,3,.85);
 
     border:
         1px solid
-        rgba(213,178,105,.35);
-
-    backdrop-filter:
-        blur(10px);
+        rgba(211,174,99,.4);
 
     box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.7);
+        0 20px 60px
+        rgba(0,0,0,.6);
 }
 
 .input-group {
 
-    text-align:
-        left;
+    width: 100%;
 
-    margin-bottom:
-        17px;
+    text-align: left;
+
+    margin-bottom: 12px;
 }
 
 .input-group label {
 
-    display:
-        block;
+    display: block;
 
-    margin-bottom:
-        7px;
+    margin-bottom: 5px;
 
-    color:
-        #d9c18d;
+    color: #d6bd82;
 
-    font-size:
-        .95rem;
+    font-size: 13px;
 }
 
 .input-group input {
 
-    width:
-        100%;
+    display: block;
 
-    height:
-        52px;
+    width: 100%;
+
+    height: 48px;
 
     padding:
-        12px 15px;
-
-    border-radius:
-        10px;
+        10px 13px;
 
     border:
-        1px solid
-        #5c4a31;
+        1px solid #5d4a31;
+
+    border-radius: 9px;
 
     background:
         rgba(255,255,255,.055);
 
-    color:
-        white;
+    color: white;
 
-    outline:
-        none;
+    outline: none;
 
     font-family:
         Georgia,
         serif;
 
-    font-size:
-        16px;
+    /*
+       Prevent iOS from zooming the page
+       when an input is selected.
+    */
 
-    -webkit-appearance:
-        none;
-
-    transition:
-        .3s;
+    font-size: 16px;
 }
 
-.input-group input:focus {
+.form-card .gold-button {
 
-    border-color:
-        #d8b96f;
-
-    box-shadow:
-        0 0 20px
-        rgba(220,185,110,.18);
-}
-
-.form-error {
-
-    display:
-        none;
-
-    margin-top:
-        15px;
-
-    color:
-        #ff9b9b;
-
-    font-size:
-        .9rem;
-
-    line-height:
-        1.4;
-
-    animation:
-        shake .35s;
-}
-
-@keyframes shake {
-
-    25% {
-        transform:
-            translateX(-6px);
-    }
-
-    50% {
-        transform:
-            translateX(6px);
-    }
-
-    75% {
-        transform:
-            translateX(-4px);
-    }
+    margin-top: 5px;
 }
 
 
 /* =========================================================
-   SCREEN 3 — SEARCH
+   SEARCH
 ========================================================= */
 
 #searchScreen {
 
-    display:
-        flex;
+    display: flex;
 
-    justify-content:
-        center;
+    align-items: center;
 
-    align-items:
-        center;
+    justify-content: center;
 
-    text-align:
-        center;
+    overflow: hidden;
 
-    overflow:
-        hidden;
+    text-align: center;
 
     background:
-
         linear-gradient(
-            120deg,
-            #0e1118,
-            #353943,
-            #11131a
+            150deg,
+            #0d1119,
+            #353a44,
+            #0c0e13
         );
-}
-
-.cloud {
-
-    position:
-        absolute;
-
-    width:
-        min(500px,120vw);
-
-    height:
-        190px;
-
-    border-radius:
-        50%;
-
-    background:
-        rgba(255,255,255,.055);
-
-    filter:
-        blur(20px);
-
-    animation:
-        cloudMove 16s
-        infinite alternate
-        ease-in-out;
-}
-
-.cloud.one {
-
-    left:
-        -150px;
-
-    top:
-        15%;
-}
-
-.cloud.two {
-
-    right:
-        -150px;
-
-    bottom:
-        10%;
-
-    animation-direction:
-        alternate-reverse;
-}
-
-.cloud.three {
-
-    left:
-        30%;
-
-    bottom:
-        -100px;
-
-    animation-duration:
-        22s;
-}
-
-@keyframes cloudMove {
-
-    from {
-
-        transform:
-            translateX(-100px)
-            scale(.9);
-    }
-
-    to {
-
-        transform:
-            translateX(180px)
-            scale(1.2);
-    }
 }
 
 .search-content {
 
-    position:
-        relative;
+    position: relative;
 
-    z-index:
-        10;
+    z-index: 5;
 
-    width:
-        100%;
+    width: 100%;
 
-    padding:
-        20px;
+    max-width: 390px;
+
+    padding: 20px 15px;
 }
 
 .magnifier {
@@ -1006,322 +575,169 @@ body {
     font-size:
         clamp(
             4rem,
-            20vw,
+            22vw,
             6rem
         );
-
-    animation:
-        searchSweep 4s
-        infinite
-        ease-in-out;
-
-    filter:
-        drop-shadow(
-            0 0 25px
-            rgba(255,255,255,.4)
-        );
-}
-
-@keyframes searchSweep {
-
-    0% {
-
-        transform:
-            translate(-25vw,-5vh)
-            rotate(-25deg);
-    }
-
-    25% {
-
-        transform:
-            translate(22vw,7vh)
-            rotate(25deg);
-    }
-
-    50% {
-
-        transform:
-            translate(-20vw,12vh)
-            rotate(-20deg);
-    }
-
-    75% {
-
-        transform:
-            translate(20vw,-7vh)
-            rotate(25deg);
-    }
-
-    100% {
-
-        transform:
-            translate(-25vw,-5vh)
-            rotate(-25deg);
-    }
 }
 
 .search-text {
 
-    min-height:
-        65px;
+    width: 100%;
 
-    margin-top:
-        25px;
+    min-height: 75px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 18px;
+
+    padding: 0 8px;
 
     font-size:
         clamp(
-            1.1rem,
+            1rem,
             5vw,
-            2.5rem
+            1.6rem
         );
 
-    line-height:
-        1.4;
-
-    text-shadow:
-        0 0 20px
-        rgba(255,255,255,.4);
-
-    transition:
-        opacity .3s ease;
+    line-height: 1.35;
 }
 
 .search-dots {
 
-    margin-top:
-        8px;
+    margin-top: 5px;
 
-    color:
-        #aeb2ba;
+    letter-spacing: 5px;
 
-    letter-spacing:
-        6px;
+    color: #b8bdc5;
 }
 
 
 /* =========================================================
-   SCREEN 4 — FOUND
+   FOUND SCREEN
 ========================================================= */
 
 #foundScreen {
 
-    display:
-        flex;
+    display: flex;
 
-    justify-content:
-        center;
+    align-items: center;
 
-    align-items:
-        center;
+    justify-content: center;
 
-    text-align:
-        center;
-
-    overflow-y:
-        auto;
+    overflow-y: auto;
 
     padding:
-        25px 15px;
+        20px 15px;
 
     background:
-
         radial-gradient(
-            circle at center,
-            #4a3822,
-            #0a0806 70%
+            circle,
+            #4b3924,
+            #090705 75%
         );
 }
 
 .found-content {
 
-    width:
-        100%;
+    width: 100%;
 
-    max-width:
-        500px;
+    max-width: 390px;
+
+    text-align: center;
 
     padding:
-        20px 0;
-
-    animation:
-        foundReveal
-        2s
-        cubic-bezier(.2,.8,.2,1);
-}
-
-@keyframes foundReveal {
-
-    from {
-
-        opacity:
-            0;
-
-        transform:
-            scale(.5)
-            translateY(80px);
-
-        filter:
-            blur(20px);
-    }
-
-    to {
-
-        opacity:
-            1;
-
-        transform:
-            scale(1)
-            translateY(0);
-
-        filter:
-            blur(0);
-    }
+        10px 0 25px;
 }
 
 .found-small {
 
-    letter-spacing:
-        clamp(
-            2px,
-            2vw,
-            6px
-        );
+    font-size: 10px;
 
-    color:
-        #d9bd7c;
+    letter-spacing: 3px;
 
-    font-size:
-        .75rem;
+    color: #d4b76e;
 }
 
 .found-name {
 
+    width: 100%;
+
     font-size:
         clamp(
-            2.5rem,
+            2.3rem,
             11vw,
-            7rem
+            4rem
         );
 
-    line-height:
-        1.1;
+    line-height: 1.1;
 
     margin:
-        12px 0 20px;
-
-    text-shadow:
-
-        0 0 15px
-        rgba(255,255,255,.13),
-
-        0 0 50px
-        rgba(225,190,110,.7);
+        8px 0 15px;
 }
 
 
-/* =========================================================
-   FOUND PHOTO
-========================================================= */
+/*
+   Portrait photo:
+   NEVER force a fixed height.
+*/
 
 .photo-preview {
 
-    display:
-        block;
+    display: block;
 
     width:
         min(
-            280px,
-            72vw
+            78vw,
+            280px
         );
 
-    height:
-        auto;
+    height: auto;
 
-    max-height:
-        52dvh;
+    max-height: 52dvh;
 
-    object-fit:
-        contain;
+    object-fit: contain;
 
-    margin:
-        0 auto;
+    margin: 0 auto;
 
     border:
-        clamp(
-            5px,
-            2vw,
-            8px
-        )
-        solid
-        #c39a51;
+        6px solid #bd9149;
 
-    border-radius:
-        14px;
+    border-radius: 12px;
 
-    background:
-        #120c07;
+    background: #100a05;
 
     box-shadow:
-
-        0 0 50px
-        rgba(224,182,90,.45);
-
-    animation:
-        photoGlow 3s
-        infinite alternate;
-}
-
-@keyframes photoGlow {
-
-    from {
-
-        box-shadow:
-            0 0 25px
-            rgba(224,182,90,.25);
-    }
-
-    to {
-
-        box-shadow:
-            0 0 70px
-            rgba(224,182,90,.65);
-    }
+        0 0 45px
+        rgba(225,181,83,.4);
 }
 
 .pray-button {
 
-    margin-top:
-        25px;
+    margin-top: 18px;
 }
 
 
 /* =========================================================
-   SCREEN 5 — PRAYER
+   PRAYER
 ========================================================= */
 
 #prayerScreen {
 
-    display:
-        flex;
+    overflow-y: auto;
 
-    justify-content:
-        center;
+    overflow-x: hidden;
 
-    align-items:
-        flex-start;
-
-    overflow-y:
-        auto;
-
-    padding:
-        30px 15px;
+    -webkit-overflow-scrolling: touch;
 
     background:
-
         radial-gradient(
             circle at center,
-            #493824,
-            #090705 75%
+            #493823,
+            #080604 75%
         );
 }
 
@@ -1329,218 +745,140 @@ body {
 
     width:
         min(
-            750px,
-            100%
+            100%,
+            390px
         );
 
-    margin:
-        auto;
+    min-height: 100%;
+
+    margin: 0 auto;
 
     padding:
-        10px 0 50px;
+        25px 15px
+        45px;
 
-    text-align:
-        center;
+    text-align: center;
 }
 
 .candles {
 
-    margin-bottom:
-        25px;
+    display: flex;
 
-    display:
-        flex;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    gap:
-        clamp(
-            10px,
-            5vw,
-            35px
-        );
+    gap: 18px;
+
+    margin-bottom: 18px;
 }
 
 .candle {
 
     font-size:
         clamp(
-            2.5rem,
-            12vw,
-            4rem
+            2.2rem,
+            11vw,
+            3.5rem
         );
-
-    filter:
-        grayscale(1);
-
-    transition:
-        1s;
-}
-
-.candle.lit {
-
-    filter:
-
-        drop-shadow(
-            0 0 15px
-            #ffd76b
-        )
-
-        drop-shadow(
-            0 0 45px
-            #ffbd45
-        );
-
-    animation:
-        flamePulse 1s
-        infinite alternate;
-}
-
-@keyframes flamePulse {
-
-    from {
-        transform:
-            scale(1);
-    }
-
-    to {
-        transform:
-            scale(1.12);
-    }
 }
 
 .prayer-card {
 
+    width: 100%;
+
     padding:
-        clamp(
-            20px,
-            6vw,
-            35px
-        );
+        20px 15px;
+
+    border-radius: 17px;
 
     background:
-        rgba(17,11,6,.9);
+        rgba(12,8,4,.9);
 
     border:
-        2px solid
-        rgba(181,145,74,.65);
-
-    border-radius:
-        20px;
-
-    box-shadow:
-        0 0 80px
-        rgba(255,190,80,.12);
+        1px solid
+        rgba(201,164,89,.55);
 }
 
 .prayer-card h2 {
 
     font-size:
         clamp(
-            1.6rem,
+            1.5rem,
             7vw,
             2rem
         );
 
-    color:
-        #e4c783;
+    color: #dfc27c;
 }
 
 .prayer-card p {
 
-    color:
-        #bcae97;
-
     margin:
-        10px 0 20px;
+        7px 0 15px;
 
-    line-height:
-        1.5;
+    color: #bcae96;
+
+    font-size: 13px;
+
+    line-height: 1.5;
 }
 
 .prayer-input {
 
-    width:
-        100%;
+    display: block;
 
-    min-height:
-        180px;
+    width: 100%;
 
-    padding:
-        16px;
+    min-height: 150px;
 
-    resize:
-        vertical;
-
-    border-radius:
-        12px;
+    padding: 13px;
 
     border:
-        1px solid
-        #6d5737;
+        1px solid #665236;
+
+    border-radius: 10px;
 
     background:
         rgba(255,255,255,.05);
 
-    color:
-        white;
+    color: white;
+
+    resize: vertical;
+
+    outline: none;
 
     font-family:
         Georgia,
         serif;
 
-    font-size:
-        16px;
+    font-size: 16px;
 
-    line-height:
-        1.6;
-
-    outline:
-        none;
-
-    -webkit-appearance:
-        none;
-}
-
-.prayer-input:focus {
-
-    border-color:
-        #d6b86f;
-
-    box-shadow:
-        0 0 25px
-        rgba(215,185,110,.15);
+    line-height: 1.5;
 }
 
 
 /* =========================================================
-   SCREEN 6 — LETTER
+   LETTER
 ========================================================= */
 
 #letterScreen {
 
-    display:
-        block;
+    overflow-y: auto;
 
-    overflow-y:
-        auto;
+    overflow-x: hidden;
 
-    overflow-x:
-        hidden;
-
-    -webkit-overflow-scrolling:
-        touch;
+    -webkit-overflow-scrolling: touch;
 
     padding:
-        20px 12px 50px;
+        15px 10px
+        40px;
 
     background:
-
         radial-gradient(
-            circle at center,
-            #4a3723,
-            #090705 75%
+            circle,
+            #493721,
+            #080604 75%
         );
 }
 
@@ -1548,52 +886,13 @@ body {
 
     width:
         min(
-            680px,
-            100%
+            100%,
+            390px
         );
 
-    margin:
-        0 auto;
+    margin: 0 auto;
 
-    padding:
-        10px 0 40px;
-
-    text-align:
-        center;
-
-    animation:
-        letterReveal
-        1.8s
-        cubic-bezier(.2,.8,.2,1);
-}
-
-@keyframes letterReveal {
-
-    from {
-
-        opacity:
-            0;
-
-        transform:
-            translateY(100px)
-            scale(.75);
-
-        filter:
-            blur(15px);
-    }
-
-    to {
-
-        opacity:
-            1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-        filter:
-            blur(0);
-    }
+    text-align: center;
 }
 
 
@@ -1603,328 +902,190 @@ body {
 
 .flower-frame {
 
-    position:
-        relative;
-
-    width:
-        100%;
+    width: 100%;
 
     padding:
-        clamp(
-            8px,
-            3vw,
-            20px
-        );
+        7px;
 
-    background:
-        #24180d;
+    background: #21150b;
 
     border:
-        clamp(
-            8px,
-            3vw,
-            15px
-        )
-        solid
-        #76552d;
+        7px solid #76552c;
 
-    border-radius:
-        12px;
+    border-radius: 10px;
 
     box-shadow:
-        0 0 80px
-        rgba(222,180,90,.3);
+        0 0 50px
+        rgba(210,169,84,.25);
 }
 
 .flower-top,
 .flower-bottom {
 
+    width: 100%;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
     font-size:
         clamp(
-            1.2rem,
+            1rem,
             5vw,
-            2rem
+            1.5rem
         );
 
-    letter-spacing:
-        clamp(
-            0,
-            1vw,
-            4px
-        );
+    line-height: 1.35;
 
-    line-height:
-        1.4;
-
-    padding:
-        4px;
+    padding: 3px 0;
 }
 
 
-/* =========================================================
-   CRITICAL PORTRAIT PHOTO FIX
-========================================================= */
+/*
+   THIS is the important portrait fix.
+*/
 
 .letter-photo {
 
-    display:
-        block;
+    display: block;
 
-    width:
-        100%;
+    width: 100%;
 
-    height:
-        auto;
+    height: auto;
 
-    max-height:
-        60dvh;
+    max-width: 100%;
 
-    object-fit:
-        contain;
+    max-height: 58dvh;
 
-    object-position:
-        center;
+    object-fit: contain;
+
+    object-position: center;
+
+    margin: 3px auto;
+
+    background: #0c0804;
 
     border:
-        clamp(
-            3px,
-            1.5vw,
-            5px
-        )
-        solid
-        #c69c55;
+        3px solid #bd9149;
 
-    background:
-        #100a05;
-
-    margin:
-        5px auto;
-
-    box-shadow:
-        0 0 25px
-        rgba(0,0,0,.35);
-
-    /*
-       Prevent browser from shrinking
-       or stretching portrait photos.
-    */
-
-    aspect-ratio:
-        auto;
+    border-radius: 5px;
 }
+
 
 .letter-text {
 
-    margin-top:
-        15px;
+    width: 100%;
+
+    margin-top: 8px;
 
     padding:
-        clamp(
-            15px,
-            5vw,
-            25px
-        );
+        13px;
 
     background:
-        #fff4d9;
+        #fff3d5;
 
     color:
         #382b1b;
 
-    text-align:
-        left;
+    text-align: left;
+
+    font-size:
+        clamp(
+            .85rem,
+            4vw,
+            1rem
+        );
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+
+    overflow-wrap: anywhere;
+
+    border-radius: 3px;
+}
+
+.confirm-button {
+
+    width: min(100%, 250px);
+
+    margin-top: 18px;
+}
+
+
+/* =========================================================
+   FINAL SCREEN
+========================================================= */
+
+#finalScreen {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding:
+        15px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #b9ddfa,
+            #eaf6ff 55%,
+            #fff
+        );
+}
+
+.final-message {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: 100%;
+
+    max-width: 390px;
+
+    max-height: 82dvh;
+
+    overflow-y: auto;
+
+    padding: 15px;
+
+    text-align: center;
+}
+
+.final-message h2 {
+
+    font-size:
+        clamp(
+            1.8rem,
+            9vw,
+            3.5rem
+        );
+
+    line-height: 1.15;
+
+    margin-bottom: 15px;
+
+    color: #52687d;
+}
+
+.final-message p {
 
     font-size:
         clamp(
             .9rem,
             4vw,
-            1.05rem
+            1.15rem
         );
 
-    line-height:
-        1.8;
+    line-height: 1.7;
 
-    white-space:
-        pre-wrap;
-
-    overflow-wrap:
-        anywhere;
-
-    border-radius:
-        4px;
-
-    box-shadow:
-        inset 0 0 20px
-        rgba(120,80,20,.12);
-}
-
-.confirm-button {
-
-    margin-top:
-        22px;
-
-    width:
-        min(
-            100%,
-            260px
-        );
-}
-
-
-/* =========================================================
-   FINAL SKY
-========================================================= */
-
-#finalScreen {
-
-    display:
-        flex;
-
-    justify-content:
-        center;
-
-    align-items:
-        center;
-
-    text-align:
-        center;
-
-    overflow:
-        hidden;
-
-    padding:
-        20px;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #b9ddfa 0%,
-            #e9f5ff 50%,
-            #ffffff 100%
-        );
-
-    color:
-        #536679;
-}
-
-.sun {
-
-    position:
-        absolute;
-
-    width:
-        min(
-            650px,
-            120vw
-        );
-
-    height:
-        min(
-            650px,
-            120vw
-        );
-
-    top:
-        -250px;
-
-    right:
-        -150px;
-
-    border-radius:
-        50%;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(255,237,170,.9),
-            rgba(255,245,210,.3) 40%,
-            transparent 70%
-        );
-
-    filter:
-        blur(5px);
-
-    animation:
-        sunPulse 5s
-        infinite alternate;
-}
-
-@keyframes sunPulse {
-
-    from {
-
-        transform:
-            scale(.9);
-
-        opacity:
-            .7;
-    }
-
-    to {
-
-        transform:
-            scale(1.15);
-
-        opacity:
-            1;
-    }
-}
-
-.sky-cloud {
-
-    position:
-        absolute;
-
-    width:
-        450px;
-
-    height:
-        120px;
-
-    border-radius:
-        50%;
-
-    background:
-        rgba(255,255,255,.75);
-
-    filter:
-        blur(12px);
-
-    animation:
-        skyCloudMove 30s
-        linear infinite;
-}
-
-.sky-cloud.one {
-
-    left:
-        -300px;
-
-    top:
-        20%;
-}
-
-.sky-cloud.two {
-
-    left:
-        -500px;
-
-    top:
-        70%;
-
-    animation-delay:
-        8s;
-}
-
-@keyframes skyCloudMove {
-
-    to {
-
-        transform:
-            translateX(150vw);
-    }
+    color: #53687b;
 }
 
 
@@ -1934,14 +1095,16 @@ body {
 
 .pigeon {
 
-    position:
-        absolute;
+    position: absolute;
 
-    bottom:
-        -100px;
+    left: 50%;
 
-    left:
-        45%;
+    bottom: -80px;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 10;
 
     font-size:
         clamp(
@@ -1950,293 +1113,7 @@ body {
             5rem
         );
 
-    z-index:
-        10;
-
-    animation:
-        pigeonFlight
-        8s
-        cubic-bezier(.25,.7,.4,1)
-        forwards;
-}
-
-.letter-piece {
-
-    position:
-        absolute;
-
-    font-size:
-        clamp(
-            .9rem,
-            5vw,
-            1.4rem
-        );
-
-    bottom:
-        -10px;
-
-    left:
-        45px;
-
-    transform:
-        rotate(20deg);
-}
-
-@keyframes pigeonFlight {
-
-    0% {
-
-        bottom:
-            -100px;
-
-        left:
-            42%;
-
-        transform:
-            scale(.7)
-            rotate(-5deg);
-    }
-
-    20% {
-
-        bottom:
-            25%;
-
-        left:
-            55%;
-
-        transform:
-            scale(1)
-            rotate(5deg);
-    }
-
-    45% {
-
-        bottom:
-            45%;
-
-        left:
-            35%;
-
-        transform:
-            scale(1.1)
-            rotate(-8deg);
-    }
-
-    70% {
-
-        bottom:
-            70%;
-
-        left:
-            55%;
-
-        transform:
-            scale(.9)
-            rotate(8deg);
-    }
-
-    100% {
-
-        bottom:
-            120%;
-
-        left:
-            48%;
-
-        transform:
-            scale(.45)
-            rotate(-5deg);
-
-        opacity:
-            0;
-    }
-}
-
-
-/* =========================================================
-   FINAL MESSAGE
-========================================================= */
-
-.final-message {
-
-    position:
-        relative;
-
-    z-index:
-        20;
-
-    width:
-        min(
-            850px,
-            100%
-        );
-
-    max-height:
-        85dvh;
-
-    overflow-y:
-        auto;
-
-    padding:
-        20px;
-
-    opacity:
-        0;
-
-    transform:
-        translateY(40px);
-
-    animation:
-        finalMessageAppear
-        2.5s
-        ease
-        forwards;
-
-    animation-delay:
-        5s;
-}
-
-@keyframes finalMessageAppear {
-
-    to {
-
-        opacity:
-            1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-.final-message h2 {
-
-    font-size:
-        clamp(
-            2rem,
-            9vw,
-            5rem
-        );
-
-    line-height:
-        1.15;
-
-    margin-bottom:
-        20px;
-
-    color:
-        #52677b;
-
-    text-shadow:
-        0 3px 15px white;
-}
-
-.final-message p {
-
-    font-size:
-        clamp(
-            .95rem,
-            4vw,
-            1.5rem
-        );
-
-    line-height:
-        1.8;
-}
-
-
-/* =========================================================
-   WHITE FLASH
-========================================================= */
-
-.white-flash {
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    z-index:
-        30;
-
-    background:
-        white;
-
-    opacity:
-        0;
-
-    pointer-events:
-        none;
-
-    animation:
-        whiteFlash
-        3s
-        ease
-        forwards;
-}
-
-@keyframes whiteFlash {
-
-    0% {
-        opacity:
-            0;
-    }
-
-    15% {
-        opacity:
-            .95;
-    }
-
-    100% {
-        opacity:
-            0;
-    }
-}
-
-
-/* =========================================================
-   PETALS
-========================================================= */
-
-.petal {
-
-    position:
-        fixed;
-
-    top:
-        -50px;
-
-    font-size:
-        clamp(
-            1rem,
-            4vw,
-            1.3rem
-        );
-
-    pointer-events:
-        none;
-
-    z-index:
-        100;
-
-    animation:
-        fall
-        linear
-        forwards;
-}
-
-@keyframes fall {
-
-    to {
-
-        transform:
-            translateY(110dvh)
-            rotate(500deg);
-
-        opacity:
-            0;
-    }
+    white-space: nowrap;
 }
 
 
@@ -2244,1263 +1121,146 @@ body {
    SMALL PHONES
 ========================================================= */
 
-@media(max-width:380px) {
+@media(max-width: 360px) {
 
     .church-content {
+        padding-top: 18px;
+    }
 
-        padding-top:
-            25px;
+    .christ {
+        font-size: 4.8rem;
+    }
+
+    .church-heading {
+        font-size: 1.5rem;
+    }
+
+    .church-text {
+        margin-bottom: 12px;
+    }
+
+    .form-card {
+        padding: 15px 12px;
+    }
+
+    .input-group {
+        margin-bottom: 9px;
+    }
+
+    .input-group input {
+        height: 45px;
     }
 
     .church-door {
 
-        height:
-            330px;
+        width: 210px;
 
-        min-height:
-            280px;
+        height: 270px;
 
-        margin-top:
-            25px;
+        min-height: 270px;
+
+        margin-top: 20px;
     }
 
-    .door-title {
-
-        font-size:
-            1.9rem;
-    }
-
-    .door-subtitle {
-
-        font-size:
-            .8rem;
-    }
-
-    .form-card {
-
-        padding:
-            17px;
+    .door-enter {
+        bottom: -60px;
     }
 
     .photo-preview {
-
-        max-height:
-            45dvh;
+        max-height: 45dvh;
     }
 
     .letter-photo {
-
-        max-height:
-            48dvh;
+        max-height: 52dvh;
     }
 }
 
 
 /* =========================================================
-   LANDSCAPE PHONES
+   LANDSCAPE PHONE
 ========================================================= */
 
 @media(
-    max-height:500px
+    orientation: landscape
 ) and (
-    orientation:landscape
+    max-height: 500px
 ) {
 
-    .door-content {
-
-        transform:
-            scale(.75);
-
-        transform-origin:
-            center;
+    #doorScreen {
+        overflow-y: auto;
     }
 
-    .church-content {
+    .door-content {
+        min-height: 600px;
+        justify-content: flex-start;
+        padding-top: 25px;
+    }
 
-        padding:
-            20px 0 50px;
+    .church-door {
+
+        width: 170px;
+
+        height: 220px;
+
+        min-height: 220px;
+
+        margin-top: 15px;
     }
 
     .christ {
-
-        font-size:
-            6rem;
+        font-size: 5rem;
     }
 
-    .church-heading {
-
-        font-size:
-            1.8rem;
-    }
-
-    .form-card {
-
-        max-width:
-            700px;
+    .church-content {
+        padding-top: 15px;
     }
 
     .photo-preview {
-
-        max-height:
-            60dvh;
+        max-height: 60dvh;
     }
 
     .letter-photo {
-
-        max-height:
-            65dvh;
-    }
-
-    .final-message {
-
-        max-height:
-            90dvh;
+        max-height: 65dvh;
     }
 }
 
 
 /* =========================================================
-   REDUCE MOTION ACCESSIBILITY
+   PREVENT INPUT ZOOM ON IOS
 ========================================================= */
 
-@media(
-    prefers-reduced-motion: reduce
-) {
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration:
-            .01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        scroll-behavior:
-            auto !important;
-    }
-}
-
-</style>
-</head>
-
-
-<body>
-
-
-<!-- =========================================================
-     SCREEN 1 — DOOR
-========================================================= -->
-
-<section
-    id="doorScreen"
-    class="screen active"
->
-
-    <div class="door-atmosphere">
-
-        <div class="door-light"></div>
-
-    </div>
-
-
-    <div class="door-content">
-
-        <div class="door-title">
-
-            Welcome to the Church
-
-        </div>
-
-
-        <div class="door-subtitle">
-
-            A quiet place for memories,
-            love and prayers.
-
-        </div>
-
-
-        <div class="church-door">
-
-            <div class="door-cross">
-                ✝
-            </div>
-
-
-            <div class="door-handle"></div>
-
-
-            <button
-                class="gold-button door-enter"
-                onclick="openChurch()"
-            >
-
-                ✦ PRESS ENTER ✦
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SCREEN 2 — CHURCH
-========================================================= -->
-
-<section
-    id="churchScreen"
-    class="screen"
->
-
-    <div class="church-rays"></div>
-
-
-    <div class="church-content">
-
-
-        <div class="christ">
-
-            ✝️
-
-        </div>
-
-
-        <div class="flower-row">
-
-            🌹 🌸 🌼 🌺 🌷
-
-        </div>
-
-
-        <h1 class="church-heading">
-
-            Welcome, my child.
-
-        </h1>
-
-
-        <p class="church-text">
-
-            Tell us who you are and
-            who you wish to send
-            your letter to.
-
-        </p>
-
-
-        <div class="form-card">
-
-
-            <div class="input-group">
-
-                <label>
-                    Your Name
-                </label>
-
-                <input
-                    id="userName"
-                    type="text"
-                    autocomplete="name"
-                    placeholder="Enter your name"
-                >
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>
-                    Your Age
-                </label>
-
-                <input
-                    id="userAge"
-                    type="number"
-                    inputmode="numeric"
-                    placeholder="Enter your age"
-                >
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>
-                    Your City
-                </label>
-
-                <input
-                    id="userCity"
-                    type="text"
-                    autocomplete="address-level2"
-                    placeholder="Enter your city"
-                >
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>
-                    Who do you want
-                    to send a letter to?
-                </label>
-
-                <input
-                    id="letterTo"
-                    type="text"
-                    placeholder="Enter their name"
-                >
-
-            </div>
-
-
-            <button
-                class="gold-button"
-                onclick="startSearch()"
-            >
-
-                Enter
-
-            </button>
-
-
-            <div
-                id="formError"
-                class="form-error"
-            >
-
-                Please fill in all the text boxes.
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SCREEN 3 — SEARCH
-========================================================= -->
-
-<section
-    id="searchScreen"
-    class="screen"
->
-
-    <div class="cloud one"></div>
-
-    <div class="cloud two"></div>
-
-    <div class="cloud three"></div>
-
-
-    <div class="search-content">
-
-
-        <div class="magnifier">
-
-            🔍
-
-        </div>
-
-
-        <div
-            id="searchText"
-            class="search-text"
-        >
-
-            Opening the records...
-
-        </div>
-
-
-        <div class="search-dots">
-
-            • • •
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SCREEN 4 — FOUND
-========================================================= -->
-
-<section
-    id="foundScreen"
-    class="screen"
->
-
-    <div class="found-content">
-
-
-        <div class="found-small">
-
-            MEMORY FOUND
-
-        </div>
-
-
-        <div class="found-name">
-
-            Mr. Blabla
-
-        </div>
-
-
-        <img
-            class="photo-preview"
-            src="dadpng.png"
-            alt="Dad"
-        >
-
-
-        <button
-            class="gold-button pray-button"
-            onclick="openPrayer()"
-        >
-
-            🕯️ CLICK TO PRAY
-
-        </button>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SCREEN 5 — PRAYER
-========================================================= -->
-
-<section
-    id="prayerScreen"
-    class="screen"
->
-
-    <div class="prayer-content">
-
-
-        <div class="candles">
-
-
-            <span
-                id="candle1"
-                class="candle"
-            >
-
-                🕯️
-
-            </span>
-
-
-            <span
-                id="candle2"
-                class="candle"
-            >
-
-                🕯️
-
-            </span>
-
-
-            <span
-                id="candle3"
-                class="candle"
-            >
-
-                🕯️
-
-            </span>
-
-
-        </div>
-
-
-        <div class="prayer-card">
-
-
-            <h2>
-
-                Send a Prayer
-
-            </h2>
-
-
-            <p>
-
-                Write anything you wish
-                you could say.
-
-            </p>
-
-
-            <textarea
-                id="prayerInput"
-                class="prayer-input"
-                placeholder="Write your prayer for your dad here..."
-            ></textarea>
-
-
-            <br><br>
-
-
-            <button
-                class="gold-button"
-                onclick="showLetter()"
-            >
-
-                Send Prayer
-
-            </button>
-
-
-            <div
-                id="prayerError"
-                class="form-error"
-            >
-
-                Please write your prayer
-                before sending.
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SCREEN 6 — LETTER
-========================================================= -->
-
-<section
-    id="letterScreen"
-    class="screen"
->
-
-
-    <div
-        id="letterContainer"
-        class="letter-container"
-    >
-
-
-        <div class="flower-frame">
-
-
-            <div class="flower-top">
-
-                🌹 🌸 🌼 🌺 🌷
-
-            </div>
-
-
-            <img
-                class="letter-photo"
-                src="dadpng.png"
-                alt="Dad"
-            >
-
-
-            <div
-                id="letterText"
-                class="letter-text"
-            ></div>
-
-
-            <div class="flower-bottom">
-
-                🌷 🌺 🌼 🌸 🌹
-
-            </div>
-
-
-        </div>
-
-
-        <button
-            class="gold-button confirm-button"
-            onclick="confirmSend()"
-        >
-
-            ✉️ CONFIRM SEND
-
-        </button>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SCREEN 7 — SKY
-========================================================= -->
-
-<section
-    id="finalScreen"
-    class="screen"
->
-
-
-    <div class="sun"></div>
-
-
-    <div class="sky-cloud one"></div>
-
-    <div class="sky-cloud two"></div>
-
-
-    <div class="pigeon">
-
-        🕊️
-
-        <span class="letter-piece">
-
-            💌
-
-        </span>
-
-    </div>
-
-
-    <div class="white-flash"></div>
-
-
-    <div class="final-message">
-
-
-        <h2>
-
-            Your prayer has been heard.
-
-        </h2>
-
-
-        <p>
-
-            My child, your love does not
-            disappear just because someone
-            is no longer beside you.
-
-            <br><br>
-
-            Your memories remain.
-            Your love remains.
-
-            <br><br>
-
-            And every word you carry in your
-            heart can remain a beautiful part
-            of you.
-
-            <br><br>
-
-            Keep going.
-
-            <br>
-
-            Take care of yourself.
-
-            <br><br>
-
-            Carry the love you shared with
-            your dad wherever you go.
-
-            <br><br>
-
-            <strong>
-
-                You are not alone
-                in your memories. ❤️
-
-            </strong>
-
-        </p>
-
-
-    </div>
-
-</section>
-
-
-
-<script>
-
-/* =========================================================
-   SCREEN SWITCHER
-========================================================= */
-
-function showScreen(id) {
-
-    document
-        .querySelectorAll(".screen")
-        .forEach(screen => {
-
-            screen.classList.remove(
-                "active"
-            );
-
-        });
-
-
-    const target =
-        document.getElementById(id);
-
-
-    target.classList.add(
-        "active"
-    );
-
-
-    /*
-       Reset scroll position whenever
-       we enter a new screen.
-    */
-
-    target.scrollTop = 0;
+input,
+textarea,
+select {
+
+    font-size: 16px !important;
 }
 
 
-
 /* =========================================================
-   OPEN CHURCH
+   SAFE AREA — IPHONE NOTCH / HOME BAR
 ========================================================= */
 
-function openChurch() {
+.screen {
 
-    const door =
-        document.querySelector(
-            ".church-door"
+    padding-bottom:
+        env(
+            safe-area-inset-bottom,
+            0px
         );
-
-
-    door.style.animation =
-        "none";
-
-
-    door.style.transition =
-        "1.8s cubic-bezier(.7,0,.2,1)";
-
-
-    door.style.transform =
-        "perspective(1200px) rotateY(-75deg)";
-
-
-    door.style.boxShadow =
-        "0 0 100px rgba(255,220,150,.5)";
-
-
-    setTimeout(() => {
-
-        showScreen(
-            "churchScreen"
-        );
-
-        createPetals();
-
-    }, 1200);
 }
 
-
-
-/* =========================================================
-   START SEARCH
-========================================================= */
-
-function startSearch() {
-
-
-    const fields = [
-
-        document.getElementById(
-            "userName"
-        ),
-
-        document.getElementById(
-            "userAge"
-        ),
-
-        document.getElementById(
-            "userCity"
-        ),
-
-        document.getElementById(
-            "letterTo"
-        )
-
-    ];
-
-
-    const empty =
-        fields.some(
-            field =>
-                field.value.trim() === ""
-        );
-
-
-    if (empty) {
-
-        const error =
-            document.getElementById(
-                "formError"
-            );
-
-
-        error.style.display =
-            "block";
-
-
-        error.style.animation =
-            "none";
-
-
-        void error.offsetWidth;
-
-
-        error.style.animation =
-            "shake .35s";
-
-
-        return;
-    }
-
-
-    document
-        .getElementById(
-            "formError"
-        )
-        .style.display =
-        "none";
-
-
-    showScreen(
-        "searchScreen"
-    );
-
-
-    runSearch();
-}
-
-
-
-/* =========================================================
-   SEARCH SEQUENCE
-========================================================= */
-
-function runSearch() {
-
-
-    const searchText =
-        document.getElementById(
-            "searchText"
-        );
-
-
-    const messages = [
-
-        "Opening the records...",
-
-        "Searching through the memories...",
-
-        "Searching your dad's data in heaven...",
-
-        "Looking among the stars...",
-
-        "Searching for Mr. Blabla..."
-
-    ];
-
-
-    let index = 0;
-
-
-    searchText.textContent =
-        messages[0];
-
-
-    const interval =
-        setInterval(() => {
-
-
-            index++;
-
-
-            if (
-                index <
-                messages.length
-            ) {
-
-
-                searchText.style.opacity =
-                    "0";
-
-
-                setTimeout(() => {
-
-                    searchText.textContent =
-                        messages[index];
-
-                    searchText.style.opacity =
-                        "1";
-
-                }, 200);
-
-            }
-
-
-        }, 900);
-
-
-    setTimeout(() => {
-
-        clearInterval(
-            interval
-        );
-
-
-        showScreen(
-            "foundScreen"
-        );
-
-
-    }, 5000);
-}
-
-
-
-/* =========================================================
-   PRAYER
-========================================================= */
-
-function openPrayer() {
-
-
-    showScreen(
-        "prayerScreen"
-    );
-
-
-    setTimeout(() => {
-
-        document
-            .getElementById(
-                "candle1"
+#churchScreen,
+#prayerScreen,
+#letterScreen {
+
+    padding-bottom:
+        calc(
+            20px +
+            env(
+                safe-area-inset-bottom,
+                0px
             )
-            .classList.add(
-                "lit"
-            );
-
-    }, 300);
-
-
-    setTimeout(() => {
-
-        document
-            .getElementById(
-                "candle2"
-            )
-            .classList.add(
-                "lit"
-            );
-
-    }, 700);
-
-
-    setTimeout(() => {
-
-        document
-            .getElementById(
-                "candle3"
-            )
-            .classList.add(
-                "lit"
-            );
-
-    }, 1100);
-}
-
-
-
-/* =========================================================
-   SHOW LETTER
-========================================================= */
-
-function showLetter() {
-
-
-    const prayer =
-        document
-            .getElementById(
-                "prayerInput"
-            )
-            .value
-            .trim();
-
-
-    if (prayer === "") {
-
-
-        document
-            .getElementById(
-                "prayerError"
-            )
-            .style.display =
-            "block";
-
-
-        return;
-    }
-
-
-    document
-        .getElementById(
-            "prayerError"
-        )
-        .style.display =
-        "none";
-
-
-    document
-        .getElementById(
-            "letterText"
-        )
-        .textContent =
-        prayer;
-
-
-    showScreen(
-        "letterScreen"
-    );
-}
-
-
-
-/* =========================================================
-   CONFIRM SEND
-========================================================= */
-
-function confirmSend() {
-
-
-    const letter =
-        document.getElementById(
-            "letterContainer"
         );
-
-
-    letter.style.transition =
-        "1.3s cubic-bezier(.7,0,.2,1)";
-
-
-    letter.style.opacity =
-        "0";
-
-
-    letter.style.transform =
-        "translateY(-50px) scale(.75)";
-
-
-    setTimeout(() => {
-
-
-        showScreen(
-            "finalScreen"
-        );
-
-
-        restartPigeon();
-
-
-    }, 1200);
 }
-
-
-
-/* =========================================================
-   PIGEON
-========================================================= */
-
-function restartPigeon() {
-
-
-    const pigeon =
-        document.querySelector(
-            ".pigeon"
-        );
-
-
-    pigeon.style.animation =
-        "none";
-
-
-    void pigeon.offsetWidth;
-
-
-    pigeon.style.animation =
-        "pigeonFlight 8s cubic-bezier(.25,.7,.4,1) forwards";
-}
-
-
-
-/* =========================================================
-   PETALS
-========================================================= */
-
-function createPetals() {
-
-
-    const flowers = [
-
-        "🌸",
-        "🌹",
-        "🌺",
-        "🌷"
-
-    ];
-
-
-    for (
-        let i = 0;
-        i < 18;
-        i++
-    ) {
-
-
-        const petal =
-            document.createElement(
-                "div"
-            );
-
-
-        petal.className =
-            "petal";
-
-
-        petal.textContent =
-            flowers[
-                Math.floor(
-                    Math.random()
-                    * flowers.length
-                )
-            ];
-
-
-        petal.style.left =
-            Math.random() * 100 + "%";
-
-
-        petal.style.animationDuration =
-            (
-                5 +
-                Math.random() * 6
-            ) + "s";
-
-
-        petal.style.animationDelay =
-            Math.random() * 3 + "s";
-
-
-        document.body.appendChild(
-            petal
-        );
-
-
-        setTimeout(() => {
-
-            petal.remove();
-
-        }, 12000);
-    }
-}
-
-
-
-/* =========================================================
-   ENTER KEY
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-
-        if (
-
-            event.key === "Enter" &&
-
-            document
-                .getElementById(
-                    "doorScreen"
-                )
-                .classList
-                .contains("active")
-
-        ) {
-
-            openChurch();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   PREVENT DOUBLE TAP ZOOM
-========================================================= */
-
-let lastTouchEnd = 0;
-
-document.addEventListener(
-    "touchend",
-    function(event) {
-
-        const now =
-            Date.now();
-
-        if (
-            now - lastTouchEnd <= 300
-        ) {
-
-            event.preventDefault();
-
-        }
-
-        lastTouchEnd = now;
-
-    },
-    {
-        passive: false
-    }
-);
-
-</script>
-
-</body>
-</html>
 ```
