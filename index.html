@@ -7,6 +7,7 @@
 <title>A Letter to Heaven</title>
 
 <style>
+
 /* =========================================================
    RESET
 ========================================================= */
@@ -30,6 +31,7 @@ body {
     color: white;
 }
 
+
 /* =========================================================
    SCREEN SYSTEM
 ========================================================= */
@@ -37,11 +39,14 @@ body {
 .screen {
     position: fixed;
     inset: 0;
+
     width: 100%;
     height: 100%;
+
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+
     transition:
         opacity 1.5s ease,
         visibility 1.5s ease;
@@ -53,56 +58,76 @@ body {
     pointer-events: auto;
 }
 
+
 /* =========================================================
-   COMMON BUTTON
+   BUTTONS
 ========================================================= */
 
 .gold-button {
-    border: 1px solid rgba(245, 211, 137, 0.7);
-    background: linear-gradient(
-        135deg,
-        #e3c477,
-        #a77b35
-    );
+
+    border: 1px solid rgba(245, 211, 137, .7);
+
+    background:
+        linear-gradient(
+            135deg,
+            #e3c477,
+            #a77b35
+        );
+
     color: #1a1107;
+
     padding: 15px 38px;
+
     border-radius: 40px;
+
     font-size: 1rem;
+
     font-weight: bold;
+
     letter-spacing: 1px;
+
     cursor: pointer;
 
     box-shadow:
-        0 0 20px rgba(230, 190, 100, 0.25),
+        0 0 20px rgba(230, 190, 100, .25),
         inset 0 1px rgba(255,255,255,.5);
 
     transition: .35s;
 }
 
 .gold-button:hover {
-    transform: translateY(-4px) scale(1.03);
+
+    transform:
+        translateY(-4px)
+        scale(1.03);
 
     box-shadow:
-        0 0 25px rgba(255, 210, 100, .55),
+        0 0 30px rgba(255, 210, 100, .55),
         0 10px 35px rgba(0,0,0,.5);
 }
+
 
 /* =========================================================
    DOOR SCREEN
 ========================================================= */
 
 #doorScreen {
+
     display: flex;
+
     align-items: center;
     justify-content: center;
+
     text-align: center;
 
     background:
+
         radial-gradient(
             ellipse at center,
-            rgba(107, 82, 54, .55),
+            rgba(107,82,54,.55),
             transparent 45%
         ),
+
         linear-gradient(
             #0d0b09,
             #030303
@@ -110,87 +135,127 @@ body {
 }
 
 .door-atmosphere {
+
     position: absolute;
+
     inset: 0;
+
     overflow: hidden;
 }
 
 .door-light {
+
     position: absolute;
+
     width: 500px;
     height: 500px;
+
     left: 50%;
     top: 35%;
-    transform: translate(-50%, -50%);
 
-    background: radial-gradient(
-        circle,
-        rgba(255, 218, 145, .12),
-        transparent 70%
-    );
+    transform:
+        translate(-50%,-50%);
 
-    animation: breathingLight 5s infinite alternate;
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255,218,145,.12),
+            transparent 70%
+        );
+
+    animation:
+        breathingLight 5s infinite alternate;
 }
 
 @keyframes breathingLight {
 
     from {
+
         opacity: .3;
-        transform: translate(-50%, -50%) scale(.8);
+
+        transform:
+            translate(-50%,-50%)
+            scale(.8);
     }
 
     to {
+
         opacity: .8;
-        transform: translate(-50%, -50%) scale(1.15);
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.15);
     }
 }
 
 .door-content {
+
     position: relative;
+
     z-index: 5;
 }
 
 .door-title {
-    font-size: clamp(2.3rem, 7vw, 5.5rem);
+
+    font-size:
+        clamp(2.3rem,7vw,5.5rem);
+
     letter-spacing: 5px;
 
     text-shadow:
         0 0 10px rgba(255,255,255,.3),
         0 0 40px rgba(224,187,105,.35);
 
-    animation: titleAppear 2s ease;
+    animation:
+        titleAppear 2s ease;
 }
 
 .door-subtitle {
+
     margin-top: 20px;
+
     color: #c9bda8;
+
     font-size: 1.1rem;
+
     letter-spacing: 2px;
 }
 
 @keyframes titleAppear {
 
     from {
+
         opacity: 0;
-        transform: translateY(40px);
+
+        transform:
+            translateY(40px);
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
 .church-door {
 
-    width: min(330px, 62vw);
-    height: min(470px, 58vh);
+    width:
+        min(330px,62vw);
 
-    margin: 50px auto 0;
+    height:
+        min(470px,58vh);
+
+    margin:
+        50px auto 0;
 
     position: relative;
 
     background:
+
         linear-gradient(
             90deg,
             #160c06,
@@ -208,29 +273,39 @@ body {
         inset 0 0 60px #000,
         0 0 50px rgba(0,0,0,.8);
 
-    transform-origin: left center;
+    transform-origin:
+        left center;
 
-    animation: doorIdle 6s infinite ease-in-out;
+    animation:
+        doorIdle 6s infinite ease-in-out;
 }
 
 @keyframes doorIdle {
 
     0%,100% {
-        transform: perspective(1000px) rotateY(0deg);
+
+        transform:
+            perspective(1000px)
+            rotateY(0deg);
     }
 
     50% {
-        transform: perspective(1000px) rotateY(-2deg);
+
+        transform:
+            perspective(1000px)
+            rotateY(-2deg);
     }
 }
 
 .door-cross {
+
     position: absolute;
 
     left: 50%;
     top: 35%;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%,-50%);
 
     font-size: 4rem;
 
@@ -243,6 +318,7 @@ body {
 }
 
 .door-handle {
+
     position: absolute;
 
     right: 28px;
@@ -267,13 +343,15 @@ body {
 
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     white-space: nowrap;
 }
 
+
 /* =========================================================
-   CHURCH INTERIOR
+   CHURCH
 ========================================================= */
 
 #churchScreen {
@@ -324,17 +402,20 @@ body {
             transparent 45%
         );
 
-    animation: raysMove 12s infinite linear;
+    animation:
+        raysMove 12s infinite linear;
 }
 
 @keyframes raysMove {
 
     from {
-        transform: translateX(-20%);
+        transform:
+            translateX(-20%);
     }
 
     to {
-        transform: translateX(20%);
+        transform:
+            translateX(20%);
     }
 }
 
@@ -344,19 +425,24 @@ body {
 
     z-index: 5;
 
-    width: min(900px, 94%);
+    width:
+        min(900px,94%);
 
-    padding: 40px 10px;
+    padding:
+        40px 10px;
 }
 
 .christ {
 
-    font-size: clamp(8rem, 20vw, 15rem);
+    font-size:
+        clamp(8rem,20vw,15rem);
 
     line-height: .9;
 
     filter:
-        drop-shadow(0 0 20px rgba(255,220,150,.3));
+        drop-shadow(
+            0 0 20px rgba(255,220,150,.3)
+        );
 
     animation:
         christFloat 5s infinite ease-in-out;
@@ -377,11 +463,13 @@ body {
 
     margin: 25px 0;
 
-    font-size: clamp(2rem,5vw,4rem);
+    font-size:
+        clamp(2rem,5vw,4rem);
 
     letter-spacing: 8px;
 
-    animation: flowerGlow 4s infinite alternate;
+    animation:
+        flowerGlow 4s infinite alternate;
 }
 
 @keyframes flowerGlow {
@@ -397,7 +485,8 @@ body {
 
 .church-heading {
 
-    font-size: clamp(2rem,5vw,3.5rem);
+    font-size:
+        clamp(2rem,5vw,3.5rem);
 
     margin-bottom: 10px;
 }
@@ -411,7 +500,8 @@ body {
 
 .form-card {
 
-    width: min(700px, 100%);
+    width:
+        min(700px,100%);
 
     margin: auto;
 
@@ -419,11 +509,14 @@ body {
 
     border-radius: 20px;
 
-    background: rgba(8,6,4,.78);
+    background:
+        rgba(8,6,4,.78);
 
-    border: 1px solid rgba(213,178,105,.35);
+    border:
+        1px solid rgba(213,178,105,.35);
 
-    backdrop-filter: blur(10px);
+    backdrop-filter:
+        blur(10px);
 
     box-shadow:
         0 30px 100px rgba(0,0,0,.7);
@@ -449,19 +542,23 @@ body {
 
     width: 100%;
 
-    padding: 14px 16px;
+    padding:
+        14px 16px;
 
     border-radius: 10px;
 
-    border: 1px solid #5c4a31;
+    border:
+        1px solid #5c4a31;
 
-    background: rgba(255,255,255,.055);
+    background:
+        rgba(255,255,255,.055);
 
     color: white;
 
     outline: none;
 
-    font-family: Georgia, serif;
+    font-family:
+        Georgia, serif;
 
     font-size: 1rem;
 
@@ -470,10 +567,12 @@ body {
 
 .input-group input:focus {
 
-    border-color: #d8b96f;
+    border-color:
+        #d8b96f;
 
     box-shadow:
-        0 0 20px rgba(220,185,110,.18);
+        0 0 20px
+        rgba(220,185,110,.18);
 }
 
 .form-error {
@@ -484,18 +583,31 @@ body {
 
     color: #ff9b9b;
 
-    animation: shake .35s;
+    animation:
+        shake .35s;
 }
 
 @keyframes shake {
 
-    25% { transform: translateX(-6px); }
-    50% { transform: translateX(6px); }
-    75% { transform: translateX(-4px); }
+    25% {
+        transform:
+            translateX(-6px);
+    }
+
+    50% {
+        transform:
+            translateX(6px);
+    }
+
+    75% {
+        transform:
+            translateX(-4px);
+    }
 }
 
+
 /* =========================================================
-   SEARCH SCREEN
+   SEARCH
 ========================================================= */
 
 #searchScreen {
@@ -510,6 +622,7 @@ body {
     overflow: hidden;
 
     background:
+
         linear-gradient(
             120deg,
             #0e1118,
@@ -533,7 +646,9 @@ body {
     filter: blur(20px);
 
     animation:
-        cloudMove 16s infinite alternate ease-in-out;
+        cloudMove 16s
+        infinite alternate
+        ease-in-out;
 }
 
 .cloud.one {
@@ -547,7 +662,8 @@ body {
     right: -150px;
     bottom: 10%;
 
-    animation-direction: alternate-reverse;
+    animation-direction:
+        alternate-reverse;
 }
 
 .cloud.three {
@@ -555,17 +671,24 @@ body {
     left: 30%;
     bottom: -100px;
 
-    animation-duration: 22s;
+    animation-duration:
+        22s;
 }
 
 @keyframes cloudMove {
 
     from {
-        transform: translateX(-100px) scale(.9);
+
+        transform:
+            translateX(-100px)
+            scale(.9);
     }
 
     to {
-        transform: translateX(180px) scale(1.2);
+
+        transform:
+            translateX(180px)
+            scale(1.2);
     }
 }
 
@@ -583,39 +706,49 @@ body {
     font-size: 6rem;
 
     animation:
-        searchSweep 4s infinite ease-in-out;
+        searchSweep 4s
+        infinite
+        ease-in-out;
 
     filter:
-        drop-shadow(0 0 25px rgba(255,255,255,.4));
+        drop-shadow(
+            0 0 25px
+            rgba(255,255,255,.4)
+        );
 }
 
 @keyframes searchSweep {
 
     0% {
+
         transform:
             translate(-150px,-70px)
             rotate(-25deg);
     }
 
     25% {
+
         transform:
             translate(130px,70px)
             rotate(25deg);
     }
 
     50% {
+
         transform:
             translate(-120px,130px)
             rotate(-20deg);
     }
 
     75% {
+
         transform:
             translate(150px,-80px)
             rotate(25deg);
     }
 
     100% {
+
         transform:
             translate(-150px,-70px)
             rotate(-25deg);
@@ -628,10 +761,15 @@ body {
 
     margin-top: 35px;
 
-    font-size: clamp(1.3rem,4vw,2.5rem);
+    font-size:
+        clamp(1.3rem,4vw,2.5rem);
 
     text-shadow:
-        0 0 20px rgba(255,255,255,.4);
+        0 0 20px
+        rgba(255,255,255,.4);
+
+    transition:
+        opacity .3s ease;
 }
 
 .search-dots {
@@ -643,8 +781,9 @@ body {
     letter-spacing: 6px;
 }
 
+
 /* =========================================================
-   FOUND SCREEN
+   FOUND
 ========================================================= */
 
 #foundScreen {
@@ -657,6 +796,7 @@ body {
     text-align: center;
 
     background:
+
         radial-gradient(
             circle at center,
             #4a3822,
@@ -667,7 +807,9 @@ body {
 .found-content {
 
     animation:
-        foundReveal 2s cubic-bezier(.2,.8,.2,1);
+        foundReveal
+        2s
+        cubic-bezier(.2,.8,.2,1);
 }
 
 @keyframes foundReveal {
@@ -706,44 +848,78 @@ body {
 
 .found-name {
 
-    font-size: clamp(3rem,9vw,7rem);
+    font-size:
+        clamp(3rem,9vw,7rem);
 
     margin: 15px 0;
 
     text-shadow:
-        0 0 15px #fff2,
+        0 0 15px rgba(255,255,255,.13),
         0 0 50px rgba(225,190,110,.7);
 }
 
+
+/* =========================================================
+   PORTRAIT PHOTO FIX
+========================================================= */
+
+/*
+   IMPORTANT:
+   The photo is NOT forced into a fixed rectangle.
+
+   height:auto preserves the original portrait ratio.
+
+   object-fit: contain ensures the entire image remains visible.
+*/
+
 .photo-preview {
 
-    width: 250px;
-    height: 320px;
+    display: block;
 
-    object-fit: cover;
+    width:
+        min(280px,70vw);
+
+    height: auto;
+
+    max-height: 55vh;
+
+    object-fit: contain;
+
+    margin:
+        0 auto;
 
     border:
         8px solid #c39a51;
 
     border-radius: 15px;
 
+    background:
+        #120c07;
+
     box-shadow:
-        0 0 50px rgba(224,182,90,.45);
+        0 0 50px
+        rgba(224,182,90,.45);
 
     animation:
-        photoGlow 3s infinite alternate;
+        photoGlow 3s
+        infinite
+        alternate;
 }
 
 @keyframes photoGlow {
 
     from {
+
         box-shadow:
-            0 0 25px rgba(224,182,90,.25);
+            0 0 25px
+            rgba(224,182,90,.25);
     }
 
     to {
+
         box-shadow:
-            0 0 70px rgba(224,182,90,.65);
+            0 0 70px
+            rgba(224,182,90,.65);
     }
 }
 
@@ -752,8 +928,9 @@ body {
     margin-top: 30px;
 }
 
+
 /* =========================================================
-   PRAYER SCREEN
+   PRAYER
 ========================================================= */
 
 #prayerScreen {
@@ -766,6 +943,7 @@ body {
     text-align: center;
 
     background:
+
         radial-gradient(
             circle at center,
             #493824,
@@ -775,7 +953,8 @@ body {
 
 .prayer-content {
 
-    width: min(750px,92%);
+    width:
+        min(750px,92%);
 }
 
 .candles {
@@ -793,7 +972,8 @@ body {
 
     font-size: 4rem;
 
-    filter: grayscale(1);
+    filter:
+        grayscale(1);
 
     transition: 1s;
 }
@@ -801,11 +981,16 @@ body {
 .candle.lit {
 
     filter:
-        drop-shadow(0 0 15px #ffd76b)
-        drop-shadow(0 0 45px #ffbd45);
+        drop-shadow(
+            0 0 15px #ffd76b
+        )
+        drop-shadow(
+            0 0 45px #ffbd45
+        );
 
     animation:
-        flamePulse 1s infinite alternate;
+        flamePulse 1s
+        infinite alternate;
 }
 
 @keyframes flamePulse {
@@ -832,7 +1017,8 @@ body {
     border-radius: 20px;
 
     box-shadow:
-        0 0 80px rgba(255,190,80,.12);
+        0 0 80px
+        rgba(255,190,80,.12);
 }
 
 .prayer-card h2 {
@@ -846,7 +1032,8 @@ body {
 
     color: #bcae97;
 
-    margin: 10px 0 20px;
+    margin:
+        10px 0 20px;
 }
 
 .prayer-input {
@@ -861,13 +1048,16 @@ body {
 
     border-radius: 12px;
 
-    border: 1px solid #6d5737;
+    border:
+        1px solid #6d5737;
 
-    background: rgba(255,255,255,.05);
+    background:
+        rgba(255,255,255,.05);
 
     color: white;
 
-    font-family: Georgia, serif;
+    font-family:
+        Georgia, serif;
 
     font-size: 1rem;
 
@@ -878,14 +1068,17 @@ body {
 
 .prayer-input:focus {
 
-    border-color: #d6b86f;
+    border-color:
+        #d6b86f;
 
     box-shadow:
-        0 0 25px rgba(215,185,110,.15);
+        0 0 25px
+        rgba(215,185,110,.15);
 }
 
+
 /* =========================================================
-   LETTER SCREEN
+   LETTER
 ========================================================= */
 
 #letterScreen {
@@ -900,6 +1093,7 @@ body {
     overflow-y: auto;
 
     background:
+
         radial-gradient(
             circle at center,
             #4a3723,
@@ -909,10 +1103,20 @@ body {
 
 .letter-container {
 
-    width: min(680px,92%);
+    width:
+        min(680px,92%);
+
+    max-height: 95vh;
 
     animation:
-        letterReveal 1.8s cubic-bezier(.2,.8,.2,1);
+        letterReveal
+        1.8s
+        cubic-bezier(.2,.8,.2,1);
+
+    overflow-y: auto;
+
+    padding:
+        30px 5px;
 }
 
 @keyframes letterReveal {
@@ -940,13 +1144,20 @@ body {
     }
 }
 
+
+/* =========================================================
+   PORTRAIT FRIENDLY FLOWER FRAME
+========================================================= */
+
 .flower-frame {
 
     position: relative;
 
-    padding: 25px;
+    padding:
+        20px;
 
-    background: #24180d;
+    background:
+        #24180d;
 
     border:
         15px solid #76552d;
@@ -954,18 +1165,22 @@ body {
     border-radius: 12px;
 
     box-shadow:
-        0 0 80px rgba(222,180,90,.3);
+        0 0 80px
+        rgba(222,180,90,.3);
 }
 
-.flower-top,
-.flower-bottom {
 
-    font-size: 2rem;
+/*
+   The important fix is here.
 
-    letter-spacing: 5px;
+   width: 100%
+   height: auto
+   max-height: 55vh
+   object-fit: contain
 
-    padding: 5px;
-}
+   This means a tall phone photo stays tall
+   without being cropped.
+*/
 
 .letter-photo {
 
@@ -973,12 +1188,38 @@ body {
 
     width: 100%;
 
-    max-height: 380px;
+    height: auto;
 
-    object-fit: cover;
+    max-height: 55vh;
+
+    object-fit: contain;
 
     border:
         5px solid #c69c55;
+
+    background:
+        #100a05;
+
+    margin:
+        5px auto;
+
+    box-shadow:
+        0 0 25px
+        rgba(0,0,0,.35);
+}
+
+.flower-top,
+.flower-bottom {
+
+    font-size:
+        clamp(1.5rem,5vw,2rem);
+
+    letter-spacing:
+        4px;
+
+    padding:
+        5px;
+
 }
 
 .letter-text {
@@ -990,26 +1231,33 @@ body {
     background:
         #fff4d9;
 
-    color: #382b1b;
+    color:
+        #382b1b;
 
     text-align: left;
 
-    font-size: 1.05rem;
+    font-size:
+        1.05rem;
 
-    line-height: 1.8;
+    line-height:
+        1.8;
 
-    white-space: pre-wrap;
+    white-space:
+        pre-wrap;
 
-    border-radius: 4px;
+    border-radius:
+        4px;
 
     box-shadow:
-        inset 0 0 20px rgba(120,80,20,.12);
+        inset 0 0 20px
+        rgba(120,80,20,.12);
 }
 
 .confirm-button {
 
     margin-top: 28px;
 }
+
 
 /* =========================================================
    FINAL SKY
@@ -1027,6 +1275,7 @@ body {
     overflow: hidden;
 
     background:
+
         linear-gradient(
             180deg,
             #b9ddfa 0%,
@@ -1034,7 +1283,8 @@ body {
             #ffffff 100%
         );
 
-    color: #536679;
+    color:
+        #536679;
 }
 
 .sun {
@@ -1050,6 +1300,7 @@ body {
     border-radius: 50%;
 
     background:
+
         radial-gradient(
             circle,
             rgba(255,237,170,.9),
@@ -1057,21 +1308,27 @@ body {
             transparent 70%
         );
 
-    filter: blur(5px);
+    filter:
+        blur(5px);
 
     animation:
-        sunPulse 5s infinite alternate;
+        sunPulse 5s
+        infinite alternate;
 }
 
 @keyframes sunPulse {
 
     from {
+
         transform: scale(.9);
+
         opacity: .7;
     }
 
     to {
+
         transform: scale(1.15);
+
         opacity: 1;
     }
 }
@@ -1088,32 +1345,40 @@ body {
     background:
         rgba(255,255,255,.75);
 
-    filter: blur(12px);
+    filter:
+        blur(12px);
 
     animation:
-        skyCloudMove 30s linear infinite;
+        skyCloudMove 30s
+        linear infinite;
 }
 
 .sky-cloud.one {
 
     left: -300px;
+
     top: 20%;
 }
 
 .sky-cloud.two {
 
     left: -500px;
+
     top: 70%;
 
-    animation-delay: 8s;
+    animation-delay:
+        8s;
 }
 
 @keyframes skyCloudMove {
 
     to {
-        transform: translateX(150vw);
+
+        transform:
+            translateX(150vw);
     }
 }
+
 
 /* =========================================================
    PIGEON
@@ -1132,7 +1397,8 @@ body {
     z-index: 10;
 
     animation:
-        pigeonFlight 8s
+        pigeonFlight
+        8s
         cubic-bezier(.25,.7,.4,1)
         forwards;
 }
@@ -1147,7 +1413,8 @@ body {
 
     left: 45px;
 
-    transform: rotate(20deg);
+    transform:
+        rotate(20deg);
 }
 
 @keyframes pigeonFlight {
@@ -1155,6 +1422,7 @@ body {
     0% {
 
         bottom: -100px;
+
         left: 42%;
 
         transform:
@@ -1165,6 +1433,7 @@ body {
     20% {
 
         bottom: 25%;
+
         left: 55%;
 
         transform:
@@ -1175,6 +1444,7 @@ body {
     45% {
 
         bottom: 45%;
+
         left: 35%;
 
         transform:
@@ -1185,6 +1455,7 @@ body {
     70% {
 
         bottom: 70%;
+
         left: 55%;
 
         transform:
@@ -1195,6 +1466,7 @@ body {
     100% {
 
         bottom: 120%;
+
         left: 48%;
 
         transform:
@@ -1204,6 +1476,7 @@ body {
         opacity: 0;
     }
 }
+
 
 /* =========================================================
    FINAL MESSAGE
@@ -1221,7 +1494,8 @@ body {
 
     opacity: 0;
 
-    transform: translateY(40px);
+    transform:
+        translateY(40px);
 
     animation:
         finalMessageAppear
@@ -1229,7 +1503,8 @@ body {
         ease
         forwards;
 
-    animation-delay: 5s;
+    animation-delay:
+        5s;
 }
 
 @keyframes finalMessageAppear {
@@ -1238,7 +1513,8 @@ body {
 
         opacity: 1;
 
-        transform: translateY(0);
+        transform:
+            translateY(0);
     }
 }
 
@@ -1249,7 +1525,8 @@ body {
 
     margin-bottom: 25px;
 
-    color: #52677b;
+    color:
+        #52677b;
 
     text-shadow:
         0 3px 15px white;
@@ -1260,8 +1537,10 @@ body {
     font-size:
         clamp(1.05rem,3vw,1.5rem);
 
-    line-height: 1.9;
+    line-height:
+        1.9;
 }
+
 
 /* =========================================================
    WHITE FLASH
@@ -1275,14 +1554,18 @@ body {
 
     z-index: 30;
 
-    background: white;
+    background:
+        white;
 
     opacity: 0;
 
     pointer-events: none;
 
     animation:
-        whiteFlash 3s ease forwards;
+        whiteFlash
+        3s
+        ease
+        forwards;
 }
 
 @keyframes whiteFlash {
@@ -1300,6 +1583,7 @@ body {
     }
 }
 
+
 /* =========================================================
    PETALS
 ========================================================= */
@@ -1315,7 +1599,9 @@ body {
     pointer-events: none;
 
     animation:
-        fall linear forwards;
+        fall
+        linear
+        forwards;
 }
 
 @keyframes fall {
@@ -1330,6 +1616,7 @@ body {
     }
 }
 
+
 /* =========================================================
    MOBILE
 ========================================================= */
@@ -1337,48 +1624,109 @@ body {
 @media(max-width:600px) {
 
     .church-content {
+
         padding-top: 20px;
     }
 
     .form-card {
+
         padding: 20px;
     }
 
     .candles {
+
         gap: 12px;
     }
 
     .candle {
+
         font-size: 2.7rem;
     }
 
     .prayer-card {
+
         padding: 22px;
     }
 
+    /*
+       Portrait photos on phones:
+       Give them plenty of vertical room
+       while still preserving the entire image.
+    */
+
+    .photo-preview {
+
+        width:
+            min(240px,70vw);
+
+        max-height:
+            45vh;
+
+        height: auto;
+    }
+
     .letter-container {
-        margin: 30px 0;
+
+        width: 94%;
+
+        max-height: 96vh;
+
+        padding:
+            15px 3px;
+    }
+
+    .flower-frame {
+
+        padding: 12px;
+
+        border-width: 10px;
+    }
+
+    .letter-photo {
+
+        width: 100%;
+
+        height: auto;
+
+        max-height: 48vh;
+
+        object-fit: contain;
     }
 
     .letter-text {
-        font-size: .95rem;
+
+        font-size:
+            .95rem;
+
+        padding:
+            18px;
+
+        line-height:
+            1.6;
     }
 
     .pigeon {
-        font-size: 4rem;
+
+        font-size:
+            4rem;
     }
 }
+
 </style>
 </head>
+
 
 <body>
 
 
-<!-- =====================================================
-     1. CHURCH DOOR
-===================================================== -->
+<!-- =========================================================
+     SCREEN 1 — DOOR
+========================================================= -->
 
-<section id="doorScreen" class="screen active">
+<section
+    id="doorScreen"
+    class="screen active"
+>
 
     <div class="door-atmosphere">
 
@@ -1386,15 +1734,21 @@ body {
 
     </div>
 
+
     <div class="door-content">
 
         <div class="door-title">
             Welcome to the Church
         </div>
 
+
         <div class="door-subtitle">
-            A quiet place for memories, love and prayers.
+
+            A quiet place for memories,
+            love and prayers.
+
         </div>
+
 
         <div class="church-door">
 
@@ -1402,7 +1756,9 @@ body {
                 ✝
             </div>
 
+
             <div class="door-handle"></div>
+
 
             <button
                 class="gold-button door-enter"
@@ -1418,33 +1774,52 @@ body {
 </section>
 
 
-<!-- =====================================================
-     2. CHURCH
-===================================================== -->
 
-<section id="churchScreen" class="screen">
+<!-- =========================================================
+     SCREEN 2 — CHURCH
+========================================================= -->
+
+<section
+    id="churchScreen"
+    class="screen"
+>
 
     <div class="church-rays"></div>
 
+
     <div class="church-content">
+
 
         <div class="christ">
             ✝️
         </div>
 
+
         <div class="flower-row">
+
             🌹 🌸 🌼 🌺 🌷
+
         </div>
 
+
         <h1 class="church-heading">
+
             Welcome, my child.
+
         </h1>
 
+
         <p class="church-text">
-            Tell us who you are and who you wish to send your letter to.
+
+            Tell us who you are and
+            who you wish to send
+            your letter to.
+
         </p>
 
+
         <div class="form-card">
+
 
             <div class="input-group">
 
@@ -1459,6 +1834,7 @@ body {
                 >
 
             </div>
+
 
 
             <div class="input-group">
@@ -1476,6 +1852,7 @@ body {
             </div>
 
 
+
             <div class="input-group">
 
                 <label>
@@ -1491,10 +1868,12 @@ body {
             </div>
 
 
+
             <div class="input-group">
 
                 <label>
-                    Who do you want to send a letter to?
+                    Who do you want
+                    to send a letter to?
                 </label>
 
                 <input
@@ -1504,6 +1883,7 @@ body {
                 >
 
             </div>
+
 
 
             <button
@@ -1521,6 +1901,7 @@ body {
                 Please fill in all the text boxes.
             </div>
 
+
         </div>
 
     </div>
@@ -1528,21 +1909,32 @@ body {
 </section>
 
 
-<!-- =====================================================
-     3. SEARCH
-===================================================== -->
 
-<section id="searchScreen" class="screen">
+<!-- =========================================================
+     SCREEN 3 — SEARCH
+========================================================= -->
+
+<section
+    id="searchScreen"
+    class="screen"
+>
 
     <div class="cloud one"></div>
+
     <div class="cloud two"></div>
+
     <div class="cloud three"></div>
+
 
     <div class="search-content">
 
+
         <div class="magnifier">
+
             🔍
+
         </div>
+
 
         <div
             id="searchText"
@@ -1551,60 +1943,91 @@ body {
             Opening the records...
         </div>
 
+
         <div class="search-dots">
+
             • • •
+
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     4. FOUND
-===================================================== -->
 
-<section id="foundScreen" class="screen">
+<!-- =========================================================
+     SCREEN 4 — FOUND
+========================================================= -->
+
+<section
+    id="foundScreen"
+    class="screen"
+>
 
     <div class="found-content">
 
+
         <div class="found-small">
+
             MEMORY FOUND
+
         </div>
 
+
         <div class="found-name">
+
             Mr. Blabla
+
         </div>
+
+
+        <!--
+            PORTRAIT PHOTO
+            No cropping.
+        -->
 
         <img
             class="photo-preview"
             src="dadpng.png"
-            alt="Photo"
+            alt="Dad"
         >
 
+
         <br>
+
 
         <button
             class="gold-button pray-button"
             onclick="openPrayer()"
         >
+
             🕯️ CLICK TO PRAY
+
         </button>
+
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     5. PRAYER
-===================================================== -->
 
-<section id="prayerScreen" class="screen">
+<!-- =========================================================
+     SCREEN 5 — PRAYER
+========================================================= -->
+
+<section
+    id="prayerScreen"
+    class="screen"
+>
 
     <div class="prayer-content">
 
+
         <div class="candles">
+
 
             <span
                 id="candle1"
@@ -1613,12 +2036,14 @@ body {
                 🕯️
             </span>
 
+
             <span
                 id="candle2"
                 class="candle"
             >
                 🕯️
             </span>
+
 
             <span
                 id="candle3"
@@ -1627,18 +2052,27 @@ body {
                 🕯️
             </span>
 
+
         </div>
 
 
         <div class="prayer-card">
 
+
             <h2>
+
                 Send a Prayer
+
             </h2>
 
+
             <p>
-                Write anything you wish you could say.
+
+                Write anything you wish
+                you could say.
+
             </p>
+
 
             <textarea
                 id="prayerInput"
@@ -1646,21 +2080,30 @@ body {
                 placeholder="Write your prayer for your dad here..."
             ></textarea>
 
+
             <br>
+
 
             <button
                 class="gold-button"
                 onclick="showLetter()"
             >
+
                 Send Prayer
+
             </button>
+
 
             <div
                 id="prayerError"
                 class="form-error"
             >
-                Please write your prayer before sending.
+
+                Please write your prayer
+                before sending.
+
             </div>
+
 
         </div>
 
@@ -1669,22 +2112,37 @@ body {
 </section>
 
 
-<!-- =====================================================
-     6. LETTER
-===================================================== -->
 
-<section id="letterScreen" class="screen">
+<!-- =========================================================
+     SCREEN 6 — LETTER
+========================================================= -->
+
+<section
+    id="letterScreen"
+    class="screen"
+>
+
 
     <div
         id="letterContainer"
         class="letter-container"
     >
 
+
         <div class="flower-frame">
 
+
             <div class="flower-top">
+
                 🌹 🌸 🌼 🌺 🌷
+
             </div>
+
+
+            <!--
+                FULL PORTRAIT IMAGE
+                IS PRESERVED HERE.
+            -->
 
             <img
                 class="letter-photo"
@@ -1692,14 +2150,19 @@ body {
                 alt="Dad"
             >
 
+
             <div
                 id="letterText"
                 class="letter-text"
             ></div>
 
+
             <div class="flower-bottom">
+
                 🌷 🌺 🌼 🌸 🌹
+
             </div>
+
 
         </div>
 
@@ -1708,23 +2171,33 @@ body {
             class="gold-button confirm-button"
             onclick="confirmSend()"
         >
+
             ✉️ CONFIRM SEND
+
         </button>
+
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     7. FINAL SKY
-===================================================== -->
 
-<section id="finalScreen" class="screen">
+<!-- =========================================================
+     SCREEN 7 — SKY
+========================================================= -->
+
+<section
+    id="finalScreen"
+    class="screen"
+>
+
 
     <div class="sun"></div>
 
+
     <div class="sky-cloud one"></div>
+
     <div class="sky-cloud two"></div>
 
 
@@ -1733,7 +2206,9 @@ body {
         🕊️
 
         <span class="letter-piece">
+
             💌
+
         </span>
 
     </div>
@@ -1744,21 +2219,27 @@ body {
 
     <div class="final-message">
 
+
         <h2>
+
             Your prayer has been heard.
+
         </h2>
+
 
         <p>
 
-            My child, your love does not disappear
-            just because someone is no longer beside you.
+            My child, your love does not
+            disappear just because someone
+            is no longer beside you.
 
             <br><br>
 
             Your memories remain.
             Your love remains.
-            And every word you carry in your heart
-            can remain a beautiful part of you.
+            And every word you carry in your
+            heart can remain a beautiful part
+            of you.
 
             <br><br>
 
@@ -1770,26 +2251,31 @@ body {
 
             <br><br>
 
-            Carry the love you shared with your dad
-            wherever you go.
+            Carry the love you shared with
+            your dad wherever you go.
 
             <br><br>
 
             <strong>
-                You are not alone in your memories. ❤️
+
+                You are not alone
+                in your memories. ❤️
+
             </strong>
 
         </p>
+
 
     </div>
 
 </section>
 
 
+
 <script>
 
 /* =========================================================
-   SCREEN NAVIGATION
+   SCREEN SWITCHER
 ========================================================= */
 
 function showScreen(id) {
@@ -1802,14 +2288,16 @@ function showScreen(id) {
 
         });
 
+
     document
         .getElementById(id)
         .classList.add("active");
 }
 
 
+
 /* =========================================================
-   DOOR
+   OPEN CHURCH
 ========================================================= */
 
 function openChurch() {
@@ -1817,14 +2305,21 @@ function openChurch() {
     const door =
         document.querySelector(".church-door");
 
+
+    door.style.animation = "none";
+
+
     door.style.transition =
         "1.8s cubic-bezier(.7,0,.2,1)";
+
 
     door.style.transform =
         "perspective(1200px) rotateY(-75deg)";
 
+
     door.style.boxShadow =
         "0 0 100px rgba(255,220,150,.5)";
+
 
     setTimeout(() => {
 
@@ -1836,11 +2331,13 @@ function openChurch() {
 }
 
 
+
 /* =========================================================
-   FORM / SEARCH
+   SEARCH
 ========================================================= */
 
 function startSearch() {
+
 
     const fields = [
 
@@ -1856,8 +2353,9 @@ function startSearch() {
 
 
     const empty =
-        fields.some(field =>
-            field.value.trim() === ""
+        fields.some(
+            field =>
+                field.value.trim() === ""
         );
 
 
@@ -1866,14 +2364,21 @@ function startSearch() {
         const error =
             document.getElementById("formError");
 
-        error.style.display = "block";
 
-        error.style.animation = "none";
+        error.style.display =
+            "block";
+
+
+        error.style.animation =
+            "none";
+
 
         void error.offsetWidth;
 
+
         error.style.animation =
             "shake .35s";
+
 
         return;
     }
@@ -1881,7 +2386,8 @@ function startSearch() {
 
     document
         .getElementById("formError")
-        .style.display = "none";
+        .style.display =
+        "none";
 
 
     showScreen("searchScreen");
@@ -1891,14 +2397,18 @@ function startSearch() {
 }
 
 
+
 /* =========================================================
-   SEARCH CINEMATIC SEQUENCE
+   SEARCH SEQUENCE
 ========================================================= */
 
 function runSearch() {
 
+
     const searchText =
-        document.getElementById("searchText");
+        document.getElementById(
+            "searchText"
+        );
 
 
     const messages = [
@@ -1926,21 +2436,32 @@ function runSearch() {
     const interval =
         setInterval(() => {
 
+
             index++;
 
-            if (index < messages.length) {
 
-                searchText.style.opacity = "0";
+            if (
+                index <
+                messages.length
+            ) {
+
+
+                searchText.style.opacity =
+                    "0";
+
 
                 setTimeout(() => {
 
                     searchText.textContent =
                         messages[index];
 
-                    searchText.style.opacity = "1";
+                    searchText.style.opacity =
+                        "1";
 
                 }, 200);
+
             }
+
 
         }, 900);
 
@@ -1955,13 +2476,17 @@ function runSearch() {
 }
 
 
+
 /* =========================================================
    PRAYER
 ========================================================= */
 
 function openPrayer() {
 
-    showScreen("prayerScreen");
+
+    showScreen(
+        "prayerScreen"
+    );
 
 
     setTimeout(() => {
@@ -1992,42 +2517,59 @@ function openPrayer() {
 }
 
 
+
 /* =========================================================
    SHOW LETTER
 ========================================================= */
 
 function showLetter() {
 
+
     const prayer =
         document
-            .getElementById("prayerInput")
+            .getElementById(
+                "prayerInput"
+            )
             .value
             .trim();
 
 
     if (prayer === "") {
 
-        const error =
-            document.getElementById("prayerError");
 
-        error.style.display = "block";
+        document
+            .getElementById(
+                "prayerError"
+            )
+            .style.display =
+            "block";
+
 
         return;
     }
 
 
     document
-        .getElementById("prayerError")
-        .style.display = "none";
+        .getElementById(
+            "prayerError"
+        )
+        .style.display =
+        "none";
 
 
     document
-        .getElementById("letterText")
-        .textContent = prayer;
+        .getElementById(
+            "letterText"
+        )
+        .textContent =
+        prayer;
 
 
-    showScreen("letterScreen");
+    showScreen(
+        "letterScreen"
+    );
 }
+
 
 
 /* =========================================================
@@ -2036,14 +2578,20 @@ function showLetter() {
 
 function confirmSend() {
 
+
     const letter =
-        document.getElementById("letterContainer");
+        document.getElementById(
+            "letterContainer"
+        );
 
 
     letter.style.transition =
         "1.3s cubic-bezier(.7,0,.2,1)";
 
-    letter.style.opacity = "0";
+
+    letter.style.opacity =
+        "0";
+
 
     letter.style.transform =
         "translateY(-50px) scale(.75)";
@@ -2051,27 +2599,35 @@ function confirmSend() {
 
     setTimeout(() => {
 
-        showScreen("finalScreen");
 
-        createPetals();
+        showScreen(
+            "finalScreen"
+        );
+
 
         restartPigeon();
+
 
     }, 1200);
 }
 
 
+
 /* =========================================================
-   PIGEON RESET
+   PIGEON
 ========================================================= */
 
 function restartPigeon() {
 
+
     const pigeon =
-        document.querySelector(".pigeon");
+        document.querySelector(
+            ".pigeon"
+        );
 
 
-    pigeon.style.animation = "none";
+    pigeon.style.animation =
+        "none";
 
 
     void pigeon.offsetWidth;
@@ -2082,31 +2638,46 @@ function restartPigeon() {
 }
 
 
+
 /* =========================================================
-   FLOWING PETALS
+   PETALS
 ========================================================= */
 
 function createPetals() {
 
+
     const flowers = [
+
         "🌸",
         "🌹",
         "🌺",
         "🌷"
+
     ];
 
 
-    for (let i = 0; i < 18; i++) {
+    for (
+        let i = 0;
+        i < 18;
+        i++
+    ) {
+
 
         const petal =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        petal.className = "petal";
+
+        petal.className =
+            "petal";
+
 
         petal.textContent =
             flowers[
                 Math.floor(
-                    Math.random() * flowers.length
+                    Math.random()
+                    * flowers.length
                 )
             ];
 
@@ -2116,14 +2687,19 @@ function createPetals() {
 
 
         petal.style.animationDuration =
-            (5 + Math.random() * 6) + "s";
+            (
+                5 +
+                Math.random() * 6
+            ) + "s";
 
 
         petal.style.animationDelay =
             Math.random() * 3 + "s";
 
 
-        document.body.appendChild(petal);
+        document.body.appendChild(
+            petal
+        );
 
 
         setTimeout(() => {
@@ -2135,19 +2711,27 @@ function createPetals() {
 }
 
 
+
 /* =========================================================
-   ENTER KEY SUPPORT
+   ENTER KEY
 ========================================================= */
 
 document.addEventListener(
     "keydown",
     function(event) {
 
+
         if (
+
             event.key === "Enter" &&
+
             document
-                .getElementById("doorScreen")
-                .classList.contains("active")
+                .getElementById(
+                    "doorScreen"
+                )
+                .classList
+                .contains("active")
+
         ) {
 
             openChurch();
